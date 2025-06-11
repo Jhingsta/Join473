@@ -138,7 +138,7 @@ body {
 }
 
 hr {
-    border: 1px solid #4589FF;
+    border: 2px solid #4589FF;
     width: 150px;
 }
 
@@ -204,7 +204,7 @@ hr {
     cursor: pointer;
 }
 
-.login-footer {
+.footer {
     height: 100px;
     display: flex;
     align-items: center;
