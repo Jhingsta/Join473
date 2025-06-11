@@ -1,40 +1,57 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
     <script src="script.js"></script>
     <title>Join</title>
-</head>
-<body>
+  </head>
+  <body>
     <div class="animated-overlay-big">
-        <div class="animated-overlay">
-            <img class="animated-logo" src="./assets/Join-Logo.png" alt="Join Logo">
-        </div>
+      <div class="animated-overlay">
+        <img
+          class="animated-logo"
+          src="./assets/Join-Logo.png"
+          alt="Join Logo"
+        />
+      </div>
+    </div>
+    <div class="content-header">
+      <img
+        class="logo"
+        src="./assets/Join-Logo-colored.png"
+        alt="Join Logo colored"
+      />
+      <div class="sign-up-container">
+        <span class="sign-up-text">Not a Join User?</span>
+        <button class="sign-up-button">Sign Up</button>
+      </div>
     </div>
     <div class="content">
-        <div class="content-header">
-            <img class="logo" src="./assets/Join-Logo-colored.png" alt="Join Logo colored">
-            <div class="sign-up-container">
-                <span class="sign-up-text">Not a Join User?</span>
-                <button class="sign-up-button">Sign Up</button>
-            </div>
+      <div class="log-in-container">
+        <div class="log-in-header">
+          <span class="log-in-headline">Log in</span>
         </div>
-        <div class="log-in-container">
-            <div class="log-in-header">
-                <span class="log-in-headline">Log in</span>
-            </div>      
-        </div>
+        <hr />
         <form class="log-in-form" return="false">
-            <input id="log-in-email" type="email" placeholder="Email" required>
-            <input id="log-in-password" type="password" placeholder="Password" required>
+          <input id="log-in-email" type="email" placeholder="Email" required />
+          <input
+            id="log-in-password"
+            type="password"
+            placeholder="Password"
+            required
+          />
+          <div class="log-in-button-container">
             <button class="log-in-button">Log In</button>
             <button class="guest-login-button">Guest Log in</button>
-            </div>
+          </div>
         </form>
+      </div>
     </div>
     <footer class="login-footer">
-        <a class="privacy-policy" href="policy.html">Privacy Policy</a>
-        <a class="legal-notice" href="legal-notice.html">Legal Notice</a>
+      <a class="privacy-policy" href="policy.html">Privacy Policy</a>
+      <a class="legal-notice" href="legal-notice.html">Legal Notice</a>
     </footer>
+  </body>
+</html>
