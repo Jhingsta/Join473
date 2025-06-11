@@ -1,0 +1,51 @@
+body {
+    margin: 0;
+    background-color: white;
+   
+}
+
+.animated-overlay-big {
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    background-color: #4589ff60;
+
+}
+
+.animated-overlay {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+.animated-logo {
+    width: 265px;
+    height: 323.1px;
+}
+
+.logo {
+    position: absolute;
+    top: 80px;
+    left: 77px;
+    width: 100.03px;
+    height: 121.97px;;
+}
+
+.sign-up-container {
+    display: flex;
+    gap: 35px;
+
+}
+
+.content-header {
+    display: flex;
+    width: 100%;
+    padding: 0 20px;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.content {
+    width: 100vw;
+}
