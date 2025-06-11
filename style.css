@@ -1,3 +1,40 @@
+@keyframes fadeOut {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+    }
+}
+
+@keyframes moveLogo {
+    0% {
+        width: 265px;
+        height: 323.1px;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+    100% {
+        width: 100.03px;
+        height: 121.97px;
+        position: absolute;
+        top: 80px;
+        left: 77px;
+        transform: none;
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
 body {
     margin: 0;
     background-color: white;
@@ -8,7 +45,10 @@ body {
     position: absolute;
     width: 100vw;
     height: 100vh;
-    background-color: #4589ff60;
+    background-color: #4589ff;
+    z-index: 100;
+    animation: fadeOut 0.5s ease-in-out 1s forwards;
+    pointer-events: none;
 }
 
 .animated-overlay {
@@ -21,6 +61,7 @@ body {
 .animated-logo {
     width: 265px;
     height: 323.1px;
+    animation: moveLogo 0.5s ease-in-out 1s forwards;
 }
 
 .content-header {
@@ -37,6 +78,8 @@ body {
     left: 77px;
     width: 100.03px;
     height: 121.97px;
+    opacity: 0;
+    animation: fadeIn 0.5s ease-in-out 1.5s forwards;
 }
 
 .sign-up-container {
@@ -47,6 +90,12 @@ body {
     gap: 35px;
     align-items: center;
     flex-direction: row;
+}
+
+.sign-up-text {
+    font-size: 16px;
+    font-weight: 400;
+    color: #42526E;
 }
 
 .sign-up-button {
@@ -113,28 +162,16 @@ hr {
     background: url("./assets/mail.png") no-repeat;
     background-position: right;
     background-size: 20px 16px;
+    cursor: pointer;
+    color: #000000;
 }
 
 #log-in-password {
     background: url("./assets/lock.png") no-repeat;
     background-position: right;
     background-size: 16px 21px;
-}
-
-.log-in-button {
-    background-color: #4589FF;
-    color: white;
-    border-radius: 8px;
-    border: none;
-    padding: 10px 35px;
-}
-
-.guest-login-button {
-    background-color: white;
-    color: #647188;
-    border-radius: 8px;
-    padding: 10px 35px;
-    border: 1px solid #647188;
+    cursor: pointer;
+    color: #000000;
 }
 
 .log-in-button-container {
@@ -144,6 +181,28 @@ hr {
     gap: 39px;
 }
 
+.log-in-button {
+    background-color: #4589FF;
+    color: white;
+    border-radius: 8px;
+    border: none;
+    padding: 10px 35px;
+    cursor: pointer;
+}
+
+.log-in-button:hover, .guest-login-button:hover, .sign-up-button:hover {
+    transform: scale(1.20);
+    box-shadow: 0px 0px 10px 3px rgba(0, 0, 0, 0.08);
+}
+
+.guest-login-button {
+    background-color: white;
+    color: #647188;
+    border-radius: 8px;
+    padding: 10px 35px;
+    border: 1px solid #647188;
+    cursor: pointer;
+}
 
 .login-footer {
     height: 100px;
@@ -166,8 +225,12 @@ hr {
 }
 
 .privacy-policy:hover, .legal-notice:hover {
-    scale: 1.20;
+    transform: scale(1.20);
     color: #4589FF;
+}
+
+.log-in-form input:focus {
+    outline: none;
 }
 
 
