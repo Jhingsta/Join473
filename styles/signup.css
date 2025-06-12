@@ -1,3 +1,11 @@
+@keyframes tilt-shaking {
+    0% { transform: rotate(0deg); }
+    25% { transform: rotate(5deg); }
+    50% { transform: rotate(0eg); }
+    75% { transform: rotate(-5deg); }
+    100% { transform: rotate(0deg); }
+  }
+
 body {
   margin: 0;
   background-color: #4589ff;
@@ -130,19 +138,38 @@ hr {
     display: none;
 }
 
-label::before {
-    background-image: url("../assets/checkbox.png");
-}
-
-:checked+ label::before {
-    background-image: url("../assets/checkboxmarked.png");
-}
-
 .checkbox-container {
     display: flex;
-    justify-content: center;
     align-items: center;
     gap: 10px;
+}
+
+label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+}
+
+.custom-checkbox {
+    width: 24px;
+    height: 24px;
+    background-image: url('../assets/checkbox.png');
+    background-size: cover;
+    display: inline-block;
+}
+
+#sign-up-checkbox:checked + label .custom-checkbox {
+    background-image: url('../assets/checkboxmarked.png');
+}
+
+.error-message {
+    color: red;
+    font-size: 16px;
+    font-weight: 400;
+    animation: tilt-shaking;
+    animation-duration: 0.15s;
+    animation-iteration-count: 2;
 }
 
 .sign-up-button {
@@ -154,6 +181,11 @@ label::before {
     border: none;
     padding: 10px 20px;
     gap: 10px;
+}
+
+.sign-up-button:hover {
+    transform: scale(1.20);
+    box-shadow: 0px 0px 10px 3px rgba(0, 0, 0, 0.08);
 }
 
 .checkbox-container a {

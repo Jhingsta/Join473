@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sign Up</title>
-    <link rel="stylesheet" href="../styles/sign-up-style.css">
+    <link rel="stylesheet" href="../styles/signup.css">
     <script src="../scripts/sign-up.js"></script>
 </head>
 <body>
@@ -24,12 +24,16 @@
         <form class="sign-up-form" onsubmit="handleSignUp(event)">
             <input id="sign-up-name" type="text" placeholder="Name" required>
             <input id="sign-up-email" type="email" placeholder="Email" required>
-            <input id="sign-up-password" type="password" placeholder="Password" required>
-            <input id="sign-up-confirm-password" type="password" placeholder="Confirm Password" required>
+            <input id="sign-up-password" type="password" placeholder="Password" required minlength="8">
+            <input id="sign-up-confirm-password" type="password" placeholder="Confirm Password" required minlength="8">
             <div class="checkbox-container">
                 <input type="checkbox" id="sign-up-checkbox" required>
-                <label for="sign-up-checkbox"><img src="../assets/checkbox.png"/>I agree to the <a href="" target="_blank">Privacy Policy</a></label>
+                <label for="sign-up-checkbox">
+                    <span class="custom-checkbox"></span>
+                    I agree to the <a href="" target="_blank">Privacy Policy</a> zu
+                </label>
             </div>
+            <span id="error-message" class="error-message"></span>
             <button class="sign-up-button">Sign Up</button>
         </form>
     </div>

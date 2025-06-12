@@ -31,8 +31,10 @@ async function handleSignUp(event) {
     const { name, email, password, confirmPassword } = getSignUpFormData();
     
     if (!isPasswordValid(password, confirmPassword)) {
-        console.error('Passwörter stimmen nicht überein!');
-        return;
+        
+        togglePasswordAnimation();
+        
+        return; // Beendet die Funktion, wenn die Passwörter nicht übereinstimmen
     }
     
     const success = await saveUserToDatabase(name, email, password);
@@ -40,6 +42,72 @@ async function handleSignUp(event) {
         window.location.href = '../index.html';
     }
 }
+
+function togglePasswordAnimation(){
+    const errorMessage = document.getElementById('error-message');
+
+        // Animation zurücksetzen (damit sie neu startet)
+        errorMessage.classList.remove('error-message');
+        void errorMessage.offsetWidth; // Reflow erzwingen
+        errorMessage.classList.add('error-message');
+
+        errorMessage.textContent = 'Passwords do not match';
+        
+        // Timeout-Logik
+        setTimeout(() => {
+            errorMessage.textContent = '';
+            errorMessage.classList.remove('error-message'); // Optional: Animation zurücksetzen, wenn ausgeblendet
+        }, 3000);
+}
+
+function updateBackgroundOnInput(input) {
+    if (input.value.length > 0) {
+        input.style.backgroundImage = 'url("../assets/eye-closed.png")';
+        input.style.backgroundSize = '21.65px 18.95px';
+    } else {
+        input.style.backgroundImage = 'url("../assets/lock.png")';
+        input.style.backgroundSize = 'auto';
+    }
+}
+
+function togglePasswordVisibilityOnClick(event, input) {
+    // Nur fortfahren, wenn das Feld nicht leer ist
+    if (input.value.length === 0) return;
+    
+    const clickPosition = event.offsetX;
+    const inputWidth = input.clientWidth;
+    const iconWidth = 40; // Geschätzte Breite des Icon-Bereichs
+    
+    if (clickPosition > inputWidth - iconWidth) {
+        if (input.type === 'password') {
+            input.type = 'text';
+            input.style.backgroundImage = 'url("../assets/eye.png")';
+            input.style.backgroundSize = '21.65px 15px';
+        } else {
+            input.type = 'password';
+            input.style.backgroundImage = 'url("../assets/eye-closed.png")';
+            input.style.backgroundSize = '21.65px 18.95px';
+        }
+    }
+}
+
+function initPasswordFieldToggle() {
+    const passwordFields = [
+        document.getElementById('sign-up-password'),
+        document.getElementById('sign-up-confirm-password')
+    ];
+    
+    passwordFields.forEach(input => {
+        // Initialer Status setzen
+        updateBackgroundOnInput(input);
+        
+        input.addEventListener('input', () => updateBackgroundOnInput(input));
+        input.addEventListener('click', (event) => togglePasswordVisibilityOnClick(event, input));
+    });
+}
+
+// Initialisierung beim Laden der Seite
+document.addEventListener('DOMContentLoaded', initPasswordFieldToggle);
 
 
 
