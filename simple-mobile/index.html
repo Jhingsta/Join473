@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="simple-mobile-style.css" />
+    <title>Join - Mobile</title>
+  </head>
+  <body>
+    <!-- Startup Animation -->
+    <div class="animated-overlay-big">
+      <div class="animated-overlay">
+        <img
+          class="animated-logo"
+          src="./assets/Join-Logo.png"
+          alt="Join Logo"
+        />
+      </div>
+    </div>
+
+    <!-- Header -->
+    <div class="content-header">
+      <img
+        class="logo"
+        src="./assets/Join-Logo-colored.png"
+        alt="Join Logo colored"
+      />
+      <div class="sign-up-container">
+        <span class="sign-up-text">Not a Join User?</span>
+        <a href="sign-up/sign-up.html" class="sign-up-button">Sign Up</a>
+      </div>
+    </div>
+
+    <!-- Main Content -->
+    <main class="content">
+      <div class="log-in-container">
+        <div class="log-in-header">
+          <h1 class="log-in-headline">Log in</h1>
+        </div>
+        <hr class="divider" />
+        
+        <form class="log-in-form" action="addtaskt+sidebar/addTask.html" method="get">
+          <div class="input-group">
+            <input 
+              id="log-in-email" 
+              type="email" 
+              placeholder="Email" 
+              required 
+              autocomplete="email"
+              inputmode="email"
+            />
+          </div>
+          
+          <div class="input-group">
+            <input
+              id="log-in-password"
+              type="password"
+              placeholder="Password"
+              required
+              autocomplete="current-password"
+              minlength="6"
+            />
+          </div>
+          
+          <div class="forgot-password">
+            <a href="#" class="forgot-link">Forgot my password</a>
+          </div>
+          
+          <div class="log-in-button-container">
+            <button type="submit" class="log-in-button primary-btn">
+              Log In
+            </button>
+            <a href="addtaskt+sidebar/addTask.html" class="guest-login-button secondary-btn">
+              Guest Log in
+            </a>
+          </div>
+        </form>
+      </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <a class="privacy-policy" href="policy.html">Privacy Policy</a>
+      <a class="legal-notice" href="legal-notice.html">Legal Notice</a>
+    </footer>
+  </body>
+</html>
