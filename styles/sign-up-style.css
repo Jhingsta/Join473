@@ -63,7 +63,6 @@ body {
 }
 
 .sign-up-form input {
-    color: #D1D1D1;
     font-weight: 400;
     font-size: 19px;
     line-height: 120%;
@@ -71,6 +70,11 @@ body {
     border-bottom: 1px solid #D1D1D1;
     width: 90%;
     outline: none;
+    padding-left: 20px;
+}
+
+.sign-up-form input::placeholder {
+    color: #D1D1D1
 }
 
 .sign-up-headline {
