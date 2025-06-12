@@ -127,30 +127,15 @@ hr {
 }
 
 #sign-up-checkbox {
-    width: 16px;
-    height: 16px;
-    border-radius: 3px;
-    border: 2px solid #4589FF;
-    appearance: none;
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    background-color: white;
-    cursor: pointer;
-    position: relative;
-    padding: 0 !important;
+    display: none;
 }
 
-#sign-up-checkbox:checked {
-    background-color: white;
+label::before {
+    background-image: url("../assets/checkbox.png");
 }
 
-#sign-up-checkbox:checked::after {
-    content: "✔";
-    position: absolute;
-    left: 0;
-    top: -5px;
-    color: #4589FF;
-    font-size: 24px;
+:checked+ label::before {
+    background-image: url("../assets/checkboxmarked.png");
 }
 
 .checkbox-container {
