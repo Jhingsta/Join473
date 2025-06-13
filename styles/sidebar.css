@@ -25,7 +25,9 @@
 .sidebar-nav {
   display: flex;
   flex-direction: column;
-  gap: 2px;
+  gap: 16px;          
+  margin-top: 24px;   
+  margin-bottom: 0;
 }
 
 .nav-item {
@@ -33,10 +35,32 @@
   color: #42526E;
   display: flex;
   align-items: center;
-  padding: 10px 0 10px 22px;
+  padding: 10px 0 10px 0;  
   border-radius: 8px;
-  margin: 0 12px 0 0;
-  transition: background .14s;
+  margin: 0;
+  transition: background .14s, color .14s;
+  width: 100%;
+  box-sizing: border-box;
+  cursor: pointer;
+}
+
+.nav-item-content {
+  display: flex;
+  align-items: center;
+  gap: 16px;         
+  padding-left: 24px; 
+}
+
+.nav-item-content span {
+  font-size: 15px;
+  color: inherit;
+}
+
+.nav-item-content img {
+  width: 24px;
+  height: 24px;
+  filter: brightness(0) saturate(100%) invert(35%) sepia(9%) saturate(1193%) hue-rotate(183deg) brightness(92%) contrast(90%);
+  transition: filter 0.15s;
 }
 
 .nav-item.active {
@@ -48,26 +72,6 @@
   background: #D2E3FF;
   color: #42526E;
 }
-
-.nav-item-content {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
-
-.nav-item-content span {
-  font-size: 15px;
-  color: inherit;
-}
-
-/* Sidebar Icon Farbe: #42526E immer! */
-.nav-item-content img {
-  width: 24px;
-  height: 24px;
-  filter: brightness(0) saturate(100%) invert(35%) sepia(9%) saturate(1193%) hue-rotate(183deg) brightness(92%) contrast(90%);
-  transition: filter 0.15s;
-}
-
 
 .nav-item.active .nav-item-content img,
 .nav-item:hover .nav-item-content img {
@@ -93,3 +97,32 @@
   color: #4589FF;
 }
 
+
+@media (max-width: 850px) {
+  .sidebar {
+    width: 70px;
+  }
+  .sidebar-nav {
+    gap: 12px;
+  }
+  .sidebar-logo-header {
+    padding: 18px 0 6px 8px;
+  }
+  .nav-item-content span {
+    display: none; 
+  }
+  .nav-item-content {
+    padding-left: 13px;
+    gap: 0;
+  }
+  .sidebar-footer {
+    padding: 0 0 16px 8px;
+  }
+}
+
+
+@media (max-width: 500px) {
+  .sidebar {
+    display: none;
+  }
+}
