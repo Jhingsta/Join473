@@ -59,7 +59,7 @@ body {
     justify-content: center;
 }
 
-/* Box 1 */
+
 .metric-box-urgent {
     width: 672px;
     height: 191px;
@@ -79,7 +79,7 @@ body {
     object-fit: contain;
 }
 
-/* Box 2 */
+
 .metric-box1 {
     width: 204px;
     height: 219px;
@@ -99,7 +99,7 @@ body {
     object-fit: contain;
 }
 
-/* Box 3 */
+
 .metric-box2 {
     width: 204px;
     height: 219px;
@@ -119,7 +119,7 @@ body {
     object-fit: contain;
 }
 
-/* Box 4 */
+
 .metric-box3 {
     width: 204px;
     height: 219px;
@@ -133,13 +133,14 @@ body {
     max-width: none;
 }
 
+
 .metric-box3 img {
     width: 76px;
     height: 76px;
     object-fit: contain;
 }
 
-/* Box 5 */
+
 .metric-box4 {
     width: 204px;
     height: 219px;
@@ -159,7 +160,7 @@ body {
     object-fit: contain;
 }
 
-/* Box 6 */
+
 .metric-box5 {
     width: 204px;
     height: 219px;
