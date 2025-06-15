@@ -3,46 +3,63 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Summary</title>
+    <title>Summary - Join</title>
     <link rel="stylesheet" href="../styles/summary.css">
+    <script src="../summary/summary.js"></script>
 </head>
 <body>
     <main class="main-content">
-        <div class="box-container">
+        <div class="dashboard-container">
             <div class="greeting">
                 <h2>Good morning, <span class="username">Username</span></h2>
             </div>
-            <div class="top-row">
-                <div class="metric-box-urgent">
-                    <img src="../assets/urgent-task.png" alt="urgent task">
-                    <h3>Task Urgent</h3>
+            <div class="dashboard-grid">
+                <div class="top-row">
+                    <div class="dashboard-card dashboard-card--urgent">
+                        <img src="../assets/urgent-task.png" alt="Urgent tasks icon" class="dashboard-card__icon">
+                        <div class="dashboard-card__content">
+                            <div class="dashboard-card__left">
+                                <div class="dashboard-card__counter">
+                                    <span class="dashboard-card__number">0</span>
+                                    <h3 class="dashboard-card__title">Tasks Urgent</h3>
+                                </div>
+                            </div>
+                            <div class="dashboard-card__divider"></div>
+                            <div class="dashboard-card__right">
+                                <div class="dashboard-card__deadline">
+                                    <p class="dashboard-card__date">October 16, 2025</p>
+                                    <p class="dashboard-card__label">Upcoming Deadline</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="dashboard-card dashboard-card--board">
+                        <img src="../assets/task-in-board.png" alt="Tasks in board icon" class="dashboard-card__icon">
+                        <h3 class="dashboard-card__title">Task in Board</h3>
+                    </div>
                 </div>
 
-                <div class="metric-box1">
-                    <img src="../assets/task-in-board.png" alt="task-in-board">
-                    <h3>Task in Board</h3>
-                </div>
-            </div>
+                <div class="bottom-row">
+                    <div class="dashboard-card dashboard-card--todo">
+                        <img src="../assets/task-to-do.png" alt="Tasks to do icon" class="dashboard-card__icon">
+                        <h3 class="dashboard-card__title">Task to do</h3>
+                    </div>
 
-            <div class="bottom-row">
-                <div class="metric-box2">
-                    <img src="../assets/task-to-do.png" alt="task-to-do">
-                    <h3>Task to do</h3>
-                </div>
+                    <div class="dashboard-card dashboard-card--progress">
+                        <img src="../assets/task-inprogress.png" alt="Tasks in progress icon" class="dashboard-card__icon">
+                        <h3 class="dashboard-card__title">Task in Progress</h3>
+                    </div>
 
-                <div class="metric-box3">
-                    <img src="../assets/task-inprogress.png" alt="task-in-progress">
-                    <h3>Task in Progress</h3>
-                </div>
+                    <div class="dashboard-card dashboard-card--feedback">
+                        <img src="../assets/awaiting-feedback.png" alt="Awaiting feedback icon" class="dashboard-card__icon">
+                        <h3 class="dashboard-card__title">Awaiting Feedback</h3>
+                    </div>
 
-                <div class="metric-box4">
-                    <img src="../assets/awaiting-feedback.png" alt="awaiting-feedback">
-                    <h3>Awaiting Feedback</h3>
-                </div>
-
-                <div class="metric-box5">
-                    <img src="../assets/task-done.png" alt="task-done">
-                    <h3>Task Done</h3>
+                    <div class="dashboard-card dashboard-card--done">
+                        <img src="../assets/task-done.png" alt="Tasks done icon" class="dashboard-card__icon">
+                        <h3 class="dashboard-card__title">Task Done</h3>
+                    </div>
                 </div>
             </div>
         </div>
