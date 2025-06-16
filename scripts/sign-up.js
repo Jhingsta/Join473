@@ -39,7 +39,11 @@ async function handleSignUp(event) {
     
     const success = await saveUserToDatabase(name, email, password);
     if (success) {
-        window.location.href = '../index.html';
+        document.getElementById('sign-up-success-container').classList.remove('d-none');
+        
+        setTimeout(() => {
+            window.location.href = '../index.html';
+        }, 2000);
     }
 }
 
