@@ -1,68 +1,110 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Summary - Join</title>
-    <link rel="stylesheet" href="./styles/summary.css">
-    <script src="./scripts/summary.js"></script>
-</head>
-<body>
-    <main class="main-content">
-        <div class="dashboard-container">
-            <div class="greeting">
-                <h2>Good morning, <span class="username">Username</span></h2>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./styles/standard.css" />
+    <link rel="stylesheet" href="./styles/header.css" />
+    <link rel="stylesheet" href="./styles/sidebar.css" />
+    <link rel="stylesheet" href="./styles/summary.css" />
+    <script src="https://www.w3schools.com/lib/w3.js"></script>
+    <script src="./summary.js"></script>
+    <title>Summary</title>
+  </head>
+  <body>
+    <div w3-include-html="./header.html"></div>
+    <script>
+      w3.includeHTML();
+    </script>
+    <div class="container">
+        <div w3-include-html="./sidebar.html"></div>
+    <script>
+      w3.includeHTML();
+    </script>
+      <div class="container-content">
+        <div class="top-row">
+          <span class="greeting-time">Good afternoon, </span>
+          <span class="greeting-name">Username</span>
+        </div>
+        <div class="middle-row">
+          <div class="middle-row-left">
+            <div class="urgent-tasks-container">
+              <div class="urgent-tasks-icon-container">
+                <img
+                  class="urgent-tasks-icon"
+                  src="./assets/task-urgent.png"
+                  alt="Urgent tasks"
+                />
+                <span class="urgent-tasks-number">1</span>
+              </div>
+              <span class="urgent-tasks-text">Tasks Urgent</span>
             </div>
-            <div class="dashboard-grid">
-                <div class="top-row">
-                    <div class="dashboard-card dashboard-card--urgent">
-                        <img src="./assets/task-urgent.png" alt="Urgent tasks icon" class="dashboard-card__icon">
-                        <div class="dashboard-card__content">
-                            <div class="dashboard-card__left">
-                                <div class="dashboard-card__counter">
-                                    <span class="dashboard-card__number">0</span>
-                                    <h3 class="dashboard-card__title">Tasks Urgent</h3>
-                                </div>
-                            </div>
-                            <div class="dashboard-card__divider"></div>
-                            <div class="dashboard-card__right">
-                                <div class="dashboard-card__deadline">
-                                    <p class="dashboard-card__date">October 16, 2025</p>
-                                    <p class="dashboard-card__label">Upcoming Deadline</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="dashboard-card dashboard-card--board">
-                        <img src="./assets/task-in-board.png" alt="Tasks in board icon" class="dashboard-card__icon">
-                        <h3 class="dashboard-card__title">Task in Board</h3>
-                    </div>
+            <div class="divider"></div>
+            <div class="tasks-deadline">
+              <span class="tasks-deadline-date">26, October,2022</span>
+              <span class="tasks-deadline-text">Upcoming Deadline</span>
+            </div>
+          </div>
+          <div class="middle-row-right">
+            <div class="tasks-in-board">
+              <div class="tasks-top-row">
+                <div class="tasks-in-board-icon-container">
+                  <img
+                    class="tasks-in-board-icon"
+                    src="./assets/task-in-board.png"
+                    alt="Tasks in board"
+                  />
+                  <span class="tasks-in-board-number">0</span>
                 </div>
-
-                <div class="bottom-row">
-                    <div class="dashboard-card dashboard-card--todo">
-                        <img src="./assets/tasks-to-do.png" alt="Tasks to do icon" class="dashboard-card__icon">
-                        <h3 class="dashboard-card__title">Task to do</h3>
-                    </div>
-
-                    <div class="dashboard-card dashboard-card--progress">
-                        <img src="./assets/task-in-progress.png" alt="Tasks in progress icon" class="dashboard-card__icon">
-                        <h3 class="dashboard-card__title">Task in Progress</h3>
-                    </div>
-
-                    <div class="dashboard-card dashboard-card--feedback">
-                        <img src="./assets/awaiting-feedback.png" alt="Awaiting feedback icon" class="dashboard-card__icon">
-                        <h3 class="dashboard-card__title">Awaiting Feedback</h3>
-                    </div>
-
-                    <div class="dashboard-card dashboard-card--done">
-                        <img src="./assets/task-done.png" alt="Tasks done icon" class="dashboard-card__icon">
-                        <h3 class="dashboard-card__title">Task Done</h3>
-                    </div>
-                </div>
+                <span class="tasks-in-board-text">Tasks in board</span>
+              </div>
             </div>
         </div>
-    </main>
-</body>
+        </div>
+              <div class="tasks-bottom-row">
+                <div class="summary-card">
+                  <div class="card-icon-container">
+                    <img
+                      class="card-icon"
+                      src="./assets/tasks-to-do.png"
+                      alt="Tasks to do"
+                    />
+                    <span class="task-number">0</span>
+                  </div>
+                  <span class="task-text">Tasks to do</span>
+                </div>
+                <div class="summary-card">
+                  <div class="card-icon-container">
+                    <img
+                      class="card-icon"
+                      src="./assets/task-in-progress.png"
+                      alt="Tasks in progress"
+                    />
+                    <span class="task-number">0</span>
+                  </div>
+                  <span class="task-text">Tasks to do</span>
+                </div>
+                <div class="summary-card">
+                  <div class="card-icon-container">
+                    <img
+                      class="card-icon"
+                      src="./assets/awaiting-feedback.png"
+                      alt="Awaiting feedback"
+                    />
+                    <span class="task-number">0</span>
+                  </div>
+                  <span class="task-text">Awaiting feedback</span>
+                </div>
+                <div class="summary-card">
+                  <div class="card-icon-container">
+                    <img class="card-icon" src="./assets/task-done.png" alt="Tasks done" />
+                    <span class="task-number">0</span>
+                  </div>
+                  <span class="task-text">Tasks done</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
 </html>
