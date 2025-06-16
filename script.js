@@ -68,7 +68,7 @@ async function handleLogin(event) {
     const success = await loginUser(email, password);
     
     if (success) {
-        window.location.href = 'summary/summary.html';
+        window.location.href = './summary.html';
     } else {
         alert('Invalid email or password');
     }
@@ -80,7 +80,7 @@ async function handleGuestLogin() {
         name: 'Guest',
         email: 'guest@join.com'
     }));
-    window.location.href = 'summary/summary.html';
+    window.location.href = './summary.html';
 }
 
 function updateBackgroundOnInput(input) {
