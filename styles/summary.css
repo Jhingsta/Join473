@@ -2,6 +2,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    scroll-behavior: smooth;
 }
 
 body {
@@ -39,19 +40,21 @@ body {
 }
 
 .greeting h2 {
-    font-size: 47px;
-    font-weight: 500;
+    font-size: 48px;
+    font-weight: 400;
     color: #2A3647;
 }
 
 .greeting .username {
+    font-size: 64px;
     font-weight: 700;
+    color: #4589FF;
 }
 
 .dashboard-grid {
     display: flex;
     flex-direction: column;
-    gap: 72px;
+    gap: 40px;
 }
 
 .top-row {
@@ -78,6 +81,12 @@ body {
     transition: all 0.2s ease-in-out;
 }
 
+.dashboard-card:not(.dashboard-card--urgent):not(.dashboard-card--todo):hover {
+    background-color: #005DFF;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+}
+
 .dashboard-card:not(.dashboard-card--urgent) {
     width: 204px;
     height: 219px;
@@ -85,8 +94,8 @@ body {
     padding: 40px;
 }
 
-.dashboard-card:not(.dashboard-card--urgent):hover {
-    background-color: #D2E3FF;
+.dashboard-card--urgent:hover {
+    background-color: #FFFFFF;
     transform: translateY(-2px);
     box-shadow: 0 4px 8px rgba(0,0,0,0.15);
 }
@@ -106,7 +115,11 @@ body {
     height: 191px;
 }
 
-.dashboard-card--todo,
+.dashboard-card--todo {
+    width: 204px;
+    background-color: #D2E3FF;
+}
+
 .dashboard-card--progress,
 .dashboard-card--feedback,
 .dashboard-card--done {
@@ -120,16 +133,43 @@ body {
     color: white;
 }
 
+.dashboard-card--urgent:hover .dashboard-card__title,
+.dashboard-card--urgent:hover .dashboard-card__number,
+.dashboard-card--urgent:hover .dashboard-card__date,
+.dashboard-card--urgent:hover .dashboard-card__label {
+    color: #4589FF;
+}
+
 .dashboard-card--urgent .dashboard-card__divider {
     background-color: white;
-    opacity: 0.3;
+    opacity: 1;
+}
+
+.dashboard-card--urgent:hover .dashboard-card__divider {
+    background-color: #4589FF;
 }
 
 .dashboard-card__icon {
     width: 76px;
     height: 76px;
     object-fit: contain;
-    margin-top: -30px;
+    margin-top: -20px;
+    padding: 0;
+}
+
+.dashboard-card--urgent .dashboard-card__icon {
+    border: 3px solid white;
+    border-radius: 50%;
+    padding: 0;
+}
+
+.dashboard-card--board .dashboard-card__icon,
+.dashboard-card--progress .dashboard-card__icon,
+.dashboard-card--feedback .dashboard-card__icon,
+.dashboard-card--done .dashboard-card__icon {
+    border: 3px solid #FFFFFF;
+    border-radius: 50%;
+    padding: 0;
 }
 
 .dashboard-card__content {
@@ -171,7 +211,7 @@ body {
     height: 145px;
     background-color: white;
     margin: 0 20px;
-    opacity: 0.3;
+    opacity: 1;
 }
 
 .dashboard-card__right {
@@ -203,6 +243,12 @@ body {
     font-size: 23px;
     font-weight: 400;
     color: white;
+}
+
+.dashboard-card--todo:hover {
+    background-color: white !important;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.15);
 }
 
 @media (max-width: 768px) {
