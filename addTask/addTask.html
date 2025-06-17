@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Join - Add Task</title>
+    <link rel="stylesheet" href="styles/sidebar.css">
+    <link rel="stylesheet" href="styles/addtask.css">
+    <link rel="stylesheet" href="styles/addTaskSelfmadeDoms.css">
+    <link rel="stylesheet" href="styles/standard.css">
+    <link rel="stylesheet" href="styles/dropdown-menu.css">
+    <link rel="stylesheet" href="styles/help.css">
+    <link rel="stylesheet" href="styles/header.css">
+  </head>
+  <body>
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <nav class="sidebar-nav">
+        <div class="sidebar-logo-header">
+          <img src="assets/sidebarLogo.png" alt="Join Logo" class="sidebar-join-logo">
+        </div>
+        <a href="#" class="nav-item">
+          <div class="nav-item-content">
+            <img src="assets/Icons.png" alt="Summary">
+            <span>Summary</span>
+          </div>
+        </a>
+        <a href="addTask.html" class="nav-item active">
+          <div class="nav-item-content">
+            <img src="assets/Icons1.png" alt="Add Task">
+            <span>Add Task</span>
+          </div>
+        </a>
+        <a href="#" class="nav-item">
+          <div class="nav-item-content">
+            <img src="assets/Icons2.png" alt="Board">
+            <span>Board</span>
+          </div>
+        </a>
+        <a href="#" class="nav-item">
+          <div class="nav-item-content">
+            <img src="assets/Icons3.png" alt="Contacts">
+            <span>Contacts</span>
+          </div>
+        </a>
+      </nav>
+      <div class="sidebar-footer">
+        <a href="#">Privacy Policy</a>
+        <a href="#">Legal notice</a>
+      </div>
+    </aside>
+
+    <!-- Header -->
+    <header class="page-header">
+      <img src="assets/sidebarLogo.png" alt="Join Logo" class="header-join-logo-absolute">
+      <div class="header-right">
+        <span class="logo-title">Kanban Project Management Tool</span>
+        <div class="header-icons">
+          <div class="help-icon" id="helpIcon">?</div>
+          <div class="profile-wrapper">
+            <div class="user-initial-small" id="userInitialButton"></div>
+            <div class="dropdown-menu-small" id="userDropdown">
+              <ul>
+                <li class="mobile-only"><a href="help.html">Help</a></li>
+                <li><a href="#">Legal Notice</a></li>
+                <li><a href="#">Privacy Policy</a></li>
+                <li><a href="#">Log out</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+      <div class="maincontent">
+        <div class="h1div"><h1>Add Task</h1></div>
+        <form>
+          <div class="form-section">
+            <label for="title"><span class="required-note"></span></label>
+            <input type="text" id="title" placeholder="Enter a title"/>
+            <label for="desc">Description <span class="optional">(optional)</span></label>
+            <textarea id="desc" placeholder="Enter a Description"></textarea>
+            <label for="due-date" style="margin-top:20px;">Due date <span class="required-note"></span></label>
+            <input type="date" id="due-date" placeholder="TT . MM . JJJJ"/>
+          </div>
+          <div class="line"></div>
+          <div class="form-section">
+            <label>Priority</label>
+            <div class="priority-buttons">
+              <button type="button" class="priority-btn urgent" id="priority-urgent">
+                <span class="priority-text">Urgent</span>
+                <img src="assets/urgent.png" alt="Urgent" class="priority-icon-right">
+              </button>
+              <button type="button" class="priority-btn medium active-medium" id="priority-medium">
+                <span class="priority-text">Medium</span>
+                <img src="assets/mediumwhite.png" alt="Medium" class="priority-icon-right">
+              </button>
+              <button type="button" class="priority-btn low" id="priority-low">
+                <span class="priority-text">Low</span>
+                <img src="assets/low.png" alt="Low" class="priority-icon-right">
+              </button>
+            </div>
+            <label for="assigned">Assigned to <span class="optional">(optional)</span></label>
+            <div class="assigned-dropdown" id="assigned-dropdown">
+              <div class="assigned-select" id="assigned-select">
+                <input
+                  type="text"
+                  id="assigned-search"
+                  class="assigned-search-input"
+                  placeholder="Select contacts to assign"
+                />
+                <span class="dropdown-arrow-hover-area">
+                  <span class="dropdown-arrow-wrapper">
+                    <img src="assets/arrow_drop_down.png" class="dropdown-arrow custom-arrow assigned-arrow" alt="Dropdown Arrow">
+                  </span>
+                </span>
+              </div>
+              <div class="assigned-options d-none" id="assigned-list"></div>
+            </div>
+            <div id="selected-avatars" class="selected-avatars"></div>
+            <label for="category" style="margin-top:15px;">Category</label>
+            <div class="category-dropdown" id="category-dropdown">
+              <div class="category-select">
+                <span id="selected-category" class="category-placeholder">Select task category</span>
+                <span class="dropdown-arrow-hover-area">
+                  <span class="dropdown-arrow-wrapper">
+                    <img src="assets/arrow_drop_down.png" class="dropdown-arrow custom-arrow category-arrow" alt="Dropdown Arrow">
+                  </span>
+                </span>
+              </div>
+              <div class="category-options d-none" id="category-options">
+                <div onclick="selectCategory('Technical Task')">Technical Task</div>
+                <div onclick="selectCategory('User Story')">User Story</div>
+              </div>
+            </div>
+            <label for="subtasks">Subtasks <span class="optional">(optional)</span></label>
+            <div class="subtask-input-row">
+  <input type="text" placeholder="Add new subtask" class="subtask-input"/>
+  <span class="add-subtask-button-wrapper">
+    <button type="button" class="add-subtask-button">+</button>
+  </span>
+</div>
+            <div id="subtask-list-container" class="subtask-list-container">
+              <div id="subtask-list" class="subtask-list"></div>
+            </div>
+          </div>
+        </form>
+        <div class="bottom-buttons">
+          <div class="bottom-fixed-buttons">
+            <button type="button" class="clear-btn">Clear <span class="x">×</span></button>
+            <button type="button" class="create-btn">Create Task ✔</button>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <script src="Scripts/addSubtaks.js"></script>
+    <script src="Scripts/dropdown-menu.js"></script>
+  </body>
+</html>
