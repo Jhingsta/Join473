@@ -1,5 +1,5 @@
-body{
-    font-family: 'Open Sans', sans-serif;
+body {
+  font-family: "Open Sans", sans-serif;
 }
 
 .main-container {
@@ -24,10 +24,10 @@ body{
   gap: 72px;
 }
 
-.top-row{
-    display: flex;
-    align-items: center;
-    justify-content: center;
+.top-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .greeting-time {
@@ -58,6 +58,7 @@ body{
   border-radius: 30px;
   padding: 28px 48px;
   background-color: #4589ff;
+  cursor: pointer;
 }
 
 .middle-row-left-left {
@@ -87,8 +88,6 @@ body{
   font-weight: 700;
   color: white;
 }
-
-
 
 .middle-row-left-left-bottom span {
   font-size: 23px;
@@ -139,8 +138,8 @@ body{
   gap: 20px;
 }
 
-.middle-row-right-bottom{
-    display: flex;
+.middle-row-right-bottom {
+  display: flex;
 }
 
 .middle-row-right-top img {
@@ -149,102 +148,100 @@ body{
   height: 76px;
 }
 
-.middle-row-right-top span{
-    font-size: 48px;
-    font-weight: 700;
+.middle-row-right-top span {
+  font-size: 48px;
+  font-weight: 700;
 }
 
-.middle-row-right-bottom span{
-    font-size: 23px;
-    font-weight: 400;
-    color:#4589ff;
-    text-align: center;
+.middle-row-right-bottom span {
+  font-size: 23px;
+  font-weight: 400;
+  color: #4589ff;
+  text-align: center;
 }
 
-.bottom-row{
-    display: flex;
-    justify-content: space-between;
+.bottom-row {
+  display: flex;
+  justify-content: space-between;
 }
 
-.bottom-row-type-1{
-    box-sizing: border-box;
-    width: 204px;
-    height: 219px;
-    border-radius: 30px;
-    padding: 40px;
-    background-color: #D2E3FF;
-    box-shadow: 0px 0px 4px 0px #00000029;
-    display: flex;
-    flex-direction: column;
-    gap: 7px;
-    justify-content: center;
+.bottom-row-type-1 {
+  box-sizing: border-box;
+  width: 204px;
+  height: 219px;
+  border-radius: 30px;
+  padding: 40px;
+  background-color: #d2e3ff;
+  box-shadow: 0px 0px 4px 0px #00000029;
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  justify-content: center;
 }
 
-.bottom-row-type-1-top{
-    display: flex;
-    align-items: center;
-    gap: 20px;
+.bottom-row-type-1-top {
+  display: flex;
+  align-items: center;
+  gap: 20px;
 }
 
-.bottom-row-type-1-top img{
-    box-sizing: border-box;
-    width: 76px;
-    height: 76px;
-    object-fit: cover;
+.bottom-row-type-1-top img {
+  box-sizing: border-box;
+  width: 76px;
+  height: 76px;
+  object-fit: cover;
 }
 
-.bottom-row-type-1-top span{
-    font-size: 48px;
-    font-weight: 700;
+.bottom-row-type-1-top span {
+  font-size: 48px;
+  font-weight: 700;
 }
 
-.bottom-row-type-1-bottom span{
-    font-size: 23px;
-    font-weight: 400px;
-    color: #4589ff;
+.bottom-row-type-1-bottom span {
+  font-size: 23px;
+  font-weight: 400px;
+  color: #4589ff;
 }
 
-.bottom-row-type-2{
-    box-sizing: border-box;
-    width: 204px;
-    height: 219px;
-    padding: 40px;
-    border-radius: 30px;
-    box-shadow: 0px 0px 4px 0px #00000029;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    gap: 7px;
+.bottom-row-type-2 {
+  box-sizing: border-box;
+  width: 204px;
+  height: 219px;
+  padding: 40px;
+  border-radius: 30px;
+  box-shadow: 0px 0px 4px 0px #00000029;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 7px;
 }
 
-.bottom-row-type-2-top{
-    display: flex;
-    align-items: center;
-    gap: 20px;
+.bottom-row-type-2-top {
+  display: flex;
+  align-items: center;
+  gap: 20px;
 }
 
-.bottom-row-type-2-top img{
-    box-sizing: border-box;
-    object-fit: cover;
-    height: 76px;
-    width: 76px;
+.bottom-row-type-2-top img {
+  box-sizing: border-box;
+  object-fit: cover;
+  height: 76px;
+  width: 76px;
 }
 
-.bottom-row-type-2-top span{
-    font-size: 48px;
-    font-weight: 700;
+.bottom-row-type-2-top span {
+  font-size: 48px;
+  font-weight: 700;
 }
 
-.bottom-row-type-2-bottom{
-    display: flex;
+.bottom-row-type-2-bottom {
+  display: flex;
+  justify-content: center;
 }
 
-.bottom-row-type-2-bottom span{
-    font-size: 23px;
-    font-weight: 400;
-    color: #4589ff;
-    text-align: center;
+.bottom-row-type-2-bottom span {
+  font-size: 23px;
+  font-weight: 400;
+  color: #4589ff;
+  text-align: center;
 }
-
-
-
