@@ -5,13 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Join - Add Task</title>
     <!-- CSS Links wie im Original -->
-    <link rel="stylesheet" href="style/sidebar.css">
-    <link rel="stylesheet" href="style/addtask.css">
-    <link rel="stylesheet" href="style/addTaskSelfmadeDoms.css">
-    <link rel="stylesheet" href="style/boss.css">
-    <link rel="stylesheet" href="style/dropdown-menu.css">
-    <link rel="stylesheet" href="style/help.css">
-    <link rel="stylesheet" href="style/header.css">
+    <link rel="stylesheet" href="styles/sidebar.css">
+    <link rel="stylesheet" href="styles/addtask.css">
+    <link rel="stylesheet" href="styles/addTaskSelfmadeDoms.css">
+    <link rel="stylesheet" href="styles/standard.css">
+    <link rel="stylesheet" href="styles/dropdown-menu.css">
+    <link rel="stylesheet" href="styles/help.css">
+    <link rel="stylesheet" href="styles/header.css">
   </head>
   <body>
     <!-- Sidebar -->
@@ -79,28 +79,28 @@
         <div class="h1div"><h1>Add Task</h1></div>
         <form>
           <div class="form-section">
-            <label for="title">Title <span class="required-note">*</span></label>
+            <label for="title"><span class="required-note"></span></label>
             <input type="text" id="title" placeholder="Enter a title"/>
             <label for="desc">Description <span class="optional">(optional)</span></label>
             <textarea id="desc" placeholder="Enter a Description"></textarea>
-            <label for="due-date" style="margin-top:20px;">Due date <span class="required-note">*</span></label>
-            <input type="date" id="due-date"/>
+            <label for="due-date" style="margin-top:20px;">Due date <span class="required-note"></span></label>
+            <input type="date" id="due-date" placeholder="TT . MM . JJJJ"/>
           </div>
           <div class="line"></div>
           <div class="form-section">
             <label>Priority</label>
             <div class="priority-buttons">
-              <button type="button" class="priority-btn urgent">
-                <img src="assets/urgent.png" alt="Urgent" class="priority-icon">
-                Urgent
+              <button type="button" class="priority-btn urgent" id="priority-urgent">
+                <span class="priority-text">Urgent</span>
+                <img src="assets/urgent.png" alt="Urgent" class="priority-icon-right">
               </button>
-              <button type="button" class="priority-btn medium active-medium">
-                Medium
+              <button type="button" class="priority-btn medium active-medium" id="priority-medium">
+                <span class="priority-text">Medium</span>
                 <img src="assets/mediumwhite.png" alt="Medium" class="priority-icon-right">
               </button>
-              <button type="button" class="priority-btn low">
-                <img src="assets/low.png" alt="Low" class="priority-icon">
-                Low
+              <button type="button" class="priority-btn low" id="priority-low">
+                <span class="priority-text">Low</span>
+                <img src="assets/low.png" alt="Low" class="priority-icon-right">
               </button>
             </div>
             <label for="assigned">Assigned to <span class="optional">(optional)</span></label>
@@ -112,7 +112,11 @@
                   class="assigned-search-input"
                   placeholder="Select contacts to assign"
                 />
-                <img src="assets/arrow_drop_down.png" class="dropdown-arrow custom-arrow" alt="Dropdown Arrow">
+                <span class="dropdown-arrow-hover-area">
+                  <span class="dropdown-arrow-wrapper">
+                    <img src="assets/arrow_drop_down.png" class="dropdown-arrow custom-arrow assigned-arrow" alt="Dropdown Arrow">
+                  </span>
+                </span>
               </div>
               <div class="assigned-options d-none" id="assigned-list"></div>
             </div>
@@ -121,7 +125,11 @@
             <div class="category-dropdown" id="category-dropdown">
               <div class="category-select">
                 <span id="selected-category" class="category-placeholder">Select task category</span>
-                <img src="assets/arrow_drop_down.png" class="dropdown-arrow custom-arrow" alt="Dropdown Arrow">
+                <span class="dropdown-arrow-hover-area">
+                  <span class="dropdown-arrow-wrapper">
+                    <img src="assets/arrow_drop_down.png" class="dropdown-arrow custom-arrow category-arrow" alt="Dropdown Arrow">
+                  </span>
+                </span>
               </div>
               <div class="category-options d-none" id="category-options">
                 <div onclick="selectCategory('Technical Task')">Technical Task</div>
@@ -129,12 +137,12 @@
               </div>
             </div>
             <label for="subtasks">Subtasks <span class="optional">(optional)</span></label>
-            <div class="subtask-input-container" id="subtask-input-container">
-              <input type="text" placeholder="Add new subtask" class="subtask-input"/>
-              <div class="subtask-buttons">
-                <button type="button" class="add-subtask-button">+</button>
-              </div>
-            </div>
+            <div class="subtask-input-row">
+  <input type="text" placeholder="Add new subtask" class="subtask-input"/>
+  <span class="add-subtask-button-wrapper">
+    <button type="button" class="add-subtask-button">+</button>
+  </span>
+</div>
             <div id="subtask-list-container" class="subtask-list-container">
               <div id="subtask-list" class="subtask-list"></div>
             </div>
@@ -142,7 +150,7 @@
         </form>
         <div class="bottom-buttons">
           <div class="bottom-fixed-buttons">
-            <button type="button" class="clear-btn">Clear X</button>
+            <button type="button" class="clear-btn">Clear <span class="x">×</span></button>
             <button type="button" class="create-btn">Create Task ✔</button>
           </div>
         </div>
