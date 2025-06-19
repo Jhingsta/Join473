@@ -23,3 +23,13 @@
   filter: invert(31%) sepia(69%) saturate(7031%) hue-rotate(216deg)
     brightness(101%) contrast(106%);
 }
+
+.add-task-button:hover {
+    box-shadow: 0px 4px 8px 0px #00000033;
+    background-color: #005DFF;
+}
+
+.add-task-button:active {
+    background-color: #091931;
+    border: 1px solid #4589FF
+}
