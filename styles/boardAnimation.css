@@ -1,0 +1,25 @@
+.searchbar-container:hover {
+  border: 1px solid #4589ff;
+}
+
+.searchbar-container:focus-within {
+  border: 1px solid #005dff;
+}
+
+.searchbar-image-container:hover {
+  background-color: #e3eeff;
+}
+
+.searchbar-image-container:hover img {
+  filter: invert(41%) sepia(99%) saturate(422%) hue-rotate(181deg)
+    brightness(104%) contrast(108%);
+}
+
+.searchbar-image-container:active {
+  background-color: white;
+}
+
+.searchbar-image-container:active img {
+  filter: invert(31%) sepia(69%) saturate(7031%) hue-rotate(216deg)
+    brightness(101%) contrast(106%);
+}
