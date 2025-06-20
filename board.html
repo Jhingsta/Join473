@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="styles/boardAnimation.css" />
     <script src="https://www.w3schools.com/lib/w3.js"></script>
     <script src="scripts/board.js"></script>
+    <script src="scripts/template.js"></script>
     <title>Board</title>
   </head>
   <body>
@@ -26,17 +27,48 @@
       </script>
       <div class="main-content">
         <div class="top-row">
-          <div class="searchbar-container">
-            <input type="search" placeholder="Find Task" />
-            <div class="searchbar-image-container">
-              <img src="/assets/search.png" alt="search-icon" />
+          <div class="top-row-top">
+            <div class="searchbar-container">
+              <input type="search" placeholder="Find Task" />
+              <div class="searchbar-image-container">
+                <img src="/assets/search.png" alt="search-icon" />
+              </div>
+            </div>
+            <button class="add-task-button">
+              Add Task
+              <img src="assets/plus.png" alt="" />
+            </button>
+          </div>
+          <div class="top-row-bottom">
+            <div class="table-header">
+              <div class="table-header-text">To do</div>
+              <div class="table-header-image">
+                <img src="assets/addbtn.png" alt="addbtn" />
+              </div>
+            </div>
+            <div class="table-header">
+              <div class="table-header-text">In Progress</div>
+              <div class="table-header-image">
+                <img src="assets/addbtn.png" alt="addbtn" />
+              </div>
+            </div>
+            <div class="table-header">
+              <div class="table-header-text">Await Feedback</div>
+              <div class="table-header-image">
+                <img src="assets/addbtn.png" alt="addbtn" />
+              </div>
+            </div>
+            <div class="table-header">
+              <div class="table-header-text">Done</div>
             </div>
           </div>
-          <button class="add-task-button">Add Task
-            <img src="assets/plus.png" alt="">
-          </button>
         </div>
-        <div class="bottom-row"></div>
+        <div class="bottom-row">
+          <div class="task-container"></div>
+          <div class="task-container"></div>
+          <div class="task-container"></div>
+          <div class="task-container"></div>
+        </div>
       </div>
     </div>
   </body>
