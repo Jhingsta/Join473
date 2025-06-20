@@ -1,5 +1,9 @@
 const BASE_URL = "https://join473-22469-default-rtdb.europe-west1.firebasedatabase.app/"
 
+/**
+ * Retrieves form data from the sign-up form inputs
+ * @returns {Object} Object containing name, email, password, and confirmPassword values
+ */
 function getSignUpFormData() {
     const name = document.getElementById('sign-up-name').value;
     const email = document.getElementById('sign-up-email').value;
@@ -9,10 +13,23 @@ function getSignUpFormData() {
     return { name, email, password, confirmPassword };
 }
 
+/**
+ * Validates if the password and confirm password match
+ * @param {string} password - The password entered by user
+ * @param {string} confirmPassword - The password confirmation entered by user
+ * @returns {boolean} True if passwords match, false otherwise
+ */
 function isPasswordValid(password, confirmPassword) {
     return password === confirmPassword;
 }
 
+/**
+ * Saves user data to the Firebase database
+ * @param {string} name - User's name
+ * @param {string} email - User's email address
+ * @param {string} password - User's password
+ * @returns {Promise<boolean>} True if save was successful, false otherwise
+ */
 async function saveUserToDatabase(name, email, password) {
     try {
         const response = await fetch(`${BASE_URL}contacts.json`, {
@@ -26,6 +43,11 @@ async function saveUserToDatabase(name, email, password) {
     }
 }
 
+/**
+ * Handles the sign-up form submission
+ * Validates passwords, saves user data, and redirects on success
+ * @param {Event} event - The form submission event
+ */
 async function handleSignUp(event) {
     event.preventDefault();
     const { name, email, password, confirmPassword } = getSignUpFormData();
@@ -47,6 +69,10 @@ async function handleSignUp(event) {
     }
 }
 
+/**
+ * Displays an animated error message when passwords don't match
+ * Shows the message for 3 seconds with a CSS animation
+ */
 function togglePasswordAnimation(){
     const errorMessage = document.getElementById('error-message');
 
@@ -64,6 +90,11 @@ function togglePasswordAnimation(){
         }, 3000);
 }
 
+/**
+ * Updates the background image of password input fields based on content
+ * Shows lock icon when empty, eye-closed icon when has content
+ * @param {HTMLInputElement} input - The password input field to update
+ */
 function updateBackgroundOnInput(input) {
     if (input.value.length > 0) {
         input.style.backgroundImage = 'url("../assets/eye-closed.png")';
@@ -74,6 +105,12 @@ function updateBackgroundOnInput(input) {
     }
 }
 
+/**
+ * Toggles password visibility when clicking on the eye icon area
+ * Changes input type between 'password' and 'text' and updates icon
+ * @param {Event} event - The click event
+ * @param {HTMLInputElement} input - The password input field
+ */
 function togglePasswordVisibilityOnClick(event, input) {
     // Nur fortfahren, wenn das Feld nicht leer ist
     if (input.value.length === 0) return;
@@ -95,6 +132,11 @@ function togglePasswordVisibilityOnClick(event, input) {
     }
 }
 
+/**
+ * Initializes password field functionality for both password inputs
+ * Sets up event listeners for input changes and click events
+ * Configures initial background images and toggle behavior
+ */
 function initPasswordFieldToggle() {
     const passwordFields = [
         document.getElementById('sign-up-password'),
