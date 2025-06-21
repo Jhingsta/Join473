@@ -4,25 +4,24 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Join - Add Task</title>
-    <!-- CSS Links wie im Original -->
-    <link rel="stylesheet" href="./styles/sidebar.css">
-    <link rel="stylesheet" href="./styles/addtask.css">
-    <link rel="stylesheet" href="./styles/addTaskSelfmadeDoms.css">
-    <link rel="stylesheet" href="./styles/standard.css">
-    <link rel="stylesheet" href="./styles/dropdown-menu.css">
-    <link rel="stylesheet" href="./styles/help.css">
-    <link rel="stylesheet" href="./styles/header.css">
+    <link rel="stylesheet" href="styles/sidebar.css">
+    <link rel="stylesheet" href="styles/addtask.css">
+    <link rel="stylesheet" href="styles/addTaskSelfmadeDoms.css">
+    <link rel="stylesheet" href="styles/standard.css">
+    <link rel="stylesheet" href="styles/dropdown-menu.css">
+    <link rel="stylesheet" href="styles/help.css">
+    <link rel="stylesheet" href="styles/header.css">
   </head>
   <body>
     <!-- Sidebar -->
     <aside class="sidebar">
       <nav class="sidebar-nav">
         <div class="sidebar-logo-header">
-          <img src="./assets/sidebarLogo.png" alt="Join Logo" class="sidebar-join-logo">
+          <img src="assets/sidebarLogo.png" alt="Join Logo" class="sidebar-join-logo">
         </div>
         <a href="#" class="nav-item">
           <div class="nav-item-content">
-            <img src="./assets/Icons.png" alt="Summary">
+            <img src="assets/Icons.png" alt="Summary">
             <span>Summary</span>
           </div>
         </a>
@@ -34,13 +33,13 @@
         </a>
         <a href="#" class="nav-item">
           <div class="nav-item-content">
-            <img src="./assets/Icons2.png" alt="Board">
+            <img src="assets/Icons2.png" alt="Board">
             <span>Board</span>
           </div>
         </a>
         <a href="#" class="nav-item">
           <div class="nav-item-content">
-            <img src="./assets/Icons3.png" alt="Contacts">
+            <img src="assets/Icons3.png" alt="Contacts">
             <span>Contacts</span>
           </div>
         </a>
@@ -53,7 +52,7 @@
 
     <!-- Header -->
     <header class="page-header">
-      <img src="./assets/sidebarLogo.png" alt="Join Logo" class="header-join-logo-absolute">
+      <img src="assets/sidebarLogo.png" alt="Join Logo" class="header-join-logo-absolute">
       <div class="header-right">
         <span class="logo-title">Kanban Project Management Tool</span>
         <div class="header-icons">
@@ -76,15 +75,29 @@
     <!-- Main Content -->
     <main>
       <div class="maincontent">
-        <div class="h1div"><h1>Add Task</h1></div>
-        <form>
+        <form id="addtask-form" novalidate>
           <div class="form-section">
-            <label for="title"><span class="required-note"></span></label>
-            <input type="text" id="title" placeholder="Enter a title"/>
+            <label for="title"> <span class="required-note"></span></label>
+            <input type="text" id="title" placeholder="Enter a title" autocomplete="off" />
+            <div id="title-error" class="input-error-message"></div>
+
             <label for="desc">Description <span class="optional">(optional)</span></label>
             <textarea id="desc" placeholder="Enter a Description"></textarea>
-            <label for="due-date" style="margin-top:20px;">Due date <span class="required-note"></span></label>
-            <input type="date" id="due-date" placeholder="TT . MM . JJJJ"/>
+
+            <label for="due-date-custom" style="margin-top:20px;">Due date <span class="required-note"></span></label>
+            <div class="custom-date-row">
+              <input 
+                type="text" 
+                id="due-date-custom" 
+                class="custom-date-input"
+                placeholder="dd/mm/yyyy"
+                autocomplete="off"
+              />
+              <button type="button" class="calendar-btn" id="calendarBtn" tabindex="-1">
+                <img src="assets/event.png" alt="Calendar" class="calendar-icon"/>
+              </button>
+            </div>
+            <div id="due-date-error" class="input-error-message"></div>
           </div>
           <div class="line"></div>
           <div class="form-section">
@@ -112,9 +125,11 @@
                   class="assigned-search-input"
                   placeholder="Select contacts to assign"
                 />
-                <span class="dropdown-arrow-hover-area">
-                  <span class="dropdown-arrow-wrapper">
-                    <img src="assets/arrow_drop_down.png" class="dropdown-arrow custom-arrow assigned-arrow" alt="Dropdown Arrow">
+                <span class="dropdown-arrow-hover-area" id="assigned-arrow-hover">
+                  <span class="dropdown-arrow-wrapper" id="assigned-arrow-wrapper">
+                    <svg id="assigned-arrow" class="category-arrow" width="18" height="18" viewBox="0 0 24 24">
+                      <polyline points="6 9 12 15 18 9" fill="none" stroke="#4589FF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
                   </span>
                 </span>
               </div>
@@ -122,27 +137,32 @@
             </div>
             <div id="selected-avatars" class="selected-avatars"></div>
             <label for="category" style="margin-top:15px;">Category</label>
+
+            <!-- Category Dropdown -->
             <div class="category-dropdown" id="category-dropdown">
-              <div class="category-select">
-                <span id="selected-category" class="category-placeholder">Select task category</span>
-                <span class="dropdown-arrow-hover-area">
-                  <span class="dropdown-arrow-wrapper">
-                    <img src="assets/arrow_drop_down.png" class="dropdown-arrow custom-arrow category-arrow" alt="Dropdown Arrow">
+              <div class="category-select" id="category-select">
+                <span id="category-selected-label" class="category-placeholder">Select task category</span>
+                <span class="dropdown-arrow-hover-area" id="category-arrow-hover">
+                  <span class="dropdown-arrow-wrapper" id="category-arrow-wrapper">
+                    <svg id="category-arrow" class="category-arrow" width="18" height="18" viewBox="0 0 24 24">
+                      <polyline points="6 9 12 15 18 9" fill="none" stroke="#4589FF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
                   </span>
                 </span>
               </div>
-              <div class="category-options d-none" id="category-options">
-                <div onclick="selectCategory('Technical Task')">Technical Task</div>
-                <div onclick="selectCategory('User Story')">User Story</div>
+              <div class="category-options" id="category-options" style="display: none;">
+                <div class="category-option" data-value="Technical Task">Technical Task</div>
+                <div class="category-option" data-value="User Story">User Story</div>
               </div>
             </div>
+
             <label for="subtasks">Subtasks <span class="optional">(optional)</span></label>
             <div class="subtask-input-row">
-  <input type="text" placeholder="Add new subtask" class="subtask-input"/>
-  <span class="add-subtask-button-wrapper">
-    <button type="button" class="add-subtask-button">+</button>
-  </span>
-</div>
+              <input type="text" placeholder="Add new subtask" class="subtask-input"/>
+              <span class="add-subtask-button-wrapper">
+                <button type="button" class="add-subtask-button">+</button>
+              </span>
+            </div>
             <div id="subtask-list-container" class="subtask-list-container">
               <div id="subtask-list" class="subtask-list"></div>
             </div>
@@ -150,14 +170,19 @@
         </form>
         <div class="bottom-buttons">
           <div class="bottom-fixed-buttons">
-            <button type="button" class="clear-btn">Clear <span class="x">×</span></button>
+       <button type="button" class="clear-btn" onclick="clearForm()">
+  Clear <span class="x">×</span>
+</button>
             <button type="button" class="create-btn">Create Task ✔</button>
           </div>
         </div>
       </div>
     </main>
 
-    <script src="Scripts/addSubtaks.js"></script>
-    <script src="Scripts/dropdown-menu.js"></script>
+    <!-- Scripts -->
+    <script src="scripts/addSubtaks.js"></script>
+    <script src="scripts/dropdown-menu.js"></script>
+    <script src="scripts/addtask-validation.js"></script>
+     <script src="scripts/addTask.js"></script>
   </body>
 </html>
