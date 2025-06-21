@@ -1,4 +1,4 @@
-/* --- Subtask Item Layout --- */
+
 .subtask-item {
   display: flex;
   align-items: center;
@@ -13,7 +13,6 @@
   width: 410px;
 }
 
-/* --- Subtask Text --- */
 .subtask-title {
   font-size: 16px;
   color: #212B39;
@@ -23,7 +22,6 @@
   word-break: break-word;
 }
 
-/* --- Subtask Actions (Edit/Delete) --- */
 .subtask-actions {
   display: flex;
   align-items: center;
@@ -32,7 +30,6 @@
   transition: opacity 0.15s;
 }
 
-/* --- Show Actions on Hover --- */
 .subtask-item.hover,
 .subtask-item:hover {
   background-color: #eaf2ff;
@@ -42,7 +39,6 @@
   opacity: 1;
 }
 
-/* --- Icon-Button (Delete/Check/Edit) --- */
 .subtask-icon {
   width: 20px;
   height: 20px;
@@ -68,7 +64,7 @@
   z-index: 1;
 }
 
-/* --- Edit Subtask Row --- */
+
 .edit-subtask-row {
   display: flex;
   align-items: center;
@@ -76,7 +72,7 @@
   width: 100%;
 }
 
-/* --- Edit Subtask Input (inline editing) --- */
+
 .edit-subtask-input {
   font-size: 16px;
   padding: 5px 0 5px 10px;
@@ -90,7 +86,6 @@
   margin-right: 0;
 }
 
-/* --- Edit Subtask Icons (inline editing) --- */
 .edit-subtask-icons {
   display: flex;
   align-items: center;
@@ -98,7 +93,6 @@
   right: 80px;
 }
 
-/* --- Divider between icons in edit mode --- */
 .edit-subtask-divider {
   width: 1px;
   height: 24px;
@@ -107,7 +101,7 @@
   align-self: center;
 }
 
-/* --- Responsive Anpassung --- */
+
 @media (max-width: 600px) {
   .subtask-item {
     padding: 6px 5px;
@@ -115,7 +109,6 @@
   }
 }
 
-/* --- Category Dropdown --- */
 .category-dropdown {
   position: relative;
   width: 100%;
@@ -160,7 +153,6 @@
   border: 1px solid #29abe2;
 }
 
-/* --- Assigned Dropdown: Looks like Category Dropdown --- */
 .assigned-dropdown {
   position: relative;
   width: 100%;
@@ -198,7 +190,6 @@
   color: transparent;
 }
 
-/* --- Dropdown Arrow Style (Category & Assigned) --- */
 .dropdown-arrow-hover-area,
 #assigned-arrow-hover {
   display: flex;
@@ -240,7 +231,6 @@
   transition: stroke 0.14s;
 }
 
-/* --- Options Dropdown (like Category) --- */
 .assigned-options {
   position: absolute;
   top: 100%;
@@ -263,7 +253,6 @@
   background-color:#D2E3FF;
 }
 
-/* --- Avatars, Subtasks, etc. --- */
 .selected-avatars {
   display: flex;
   gap: 8px;
