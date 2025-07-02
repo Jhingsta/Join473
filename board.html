@@ -7,69 +7,218 @@
     <link rel="stylesheet" href="styles/header.css" />
     <link rel="stylesheet" href="styles/sidebar.css" />
     <link rel="stylesheet" href="styles/board.css" />
-    <link rel="stylesheet" href="styles/boardAnimation.css" />
-    <script src="https://www.w3schools.com/lib/w3.js"></script>
-    <script src="scripts/board.js"></script>
-    <script src="scripts/template.js"></script>
     <title>Board</title>
   </head>
   <body>
-    <header>
-      <div w3-include-html="./header.html"></div>
-      <script>
-        w3.includeHTML();
-      </script>
-    </header>
-    <div class="main-container">
-      <div w3-include-html="./sidebar.html"></div>
-      <script>
-        w3.includeHTML();
-      </script>
-      <div class="main-content">
-        <div class="top-row">
-          <div class="top-row-top">
-            <div class="searchbar-container">
-              <input type="search" placeholder="Find Task" />
-              <div class="searchbar-image-container">
-                <img src="/assets/search.png" alt="search-icon" />
-              </div>
-            </div>
-            <button class="add-task-button">
-              Add Task
-              <img src="assets/plus.png" alt="" />
-            </button>
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <nav class="sidebar-nav">
+        <div class="sidebar-logo-header">
+          <img src="assets/sidebarLogo.png" alt="Join Logo" class="sidebar-join-logo">
+        </div>
+        <a href="summary.html" class="nav-item">
+          <div class="nav-item-content">
+            <img src="assets/Icons.png" alt="Summary">
+            <span>Summary</span>
           </div>
-          <div class="top-row-bottom">
-            <div class="table-header">
-              <div class="table-header-text">To do</div>
-              <div class="table-header-image">
-                <img src="assets/addbtn.png" alt="addbtn" />
-              </div>
-            </div>
-            <div class="table-header">
-              <div class="table-header-text">In Progress</div>
-              <div class="table-header-image">
-                <img src="assets/addbtn.png" alt="addbtn" />
-              </div>
-            </div>
-            <div class="table-header">
-              <div class="table-header-text">Await Feedback</div>
-              <div class="table-header-image">
-                <img src="assets/addbtn.png" alt="addbtn" />
-              </div>
-            </div>
-            <div class="table-header">
-              <div class="table-header-text">Done</div>
+        </a>
+        <a href="addTask.html" class="nav-item">
+          <div class="nav-item-content">
+            <img src="assets/Icons1.png" alt="Add Task">
+            <span>Add Task</span>
+          </div>
+        </a>
+        <a href="board.html" class="nav-item active">
+          <div class="nav-item-content">
+            <img src="assets/Icons2.png" alt="Board">
+            <span>Board</span>
+          </div>
+        </a>
+        <a href="contacts.html" class="nav-item">
+          <div class="nav-item-content">
+            <img src="assets/Icons3.png" alt="Contacts">
+            <span>Contacts</span>
+          </div>
+        </a>
+      </nav>
+      <div class="sidebar-footer">
+        <a href="privacyPolicy.html">Privacy Policy</a>
+        <a href="Legal-notice.html">Legal notice</a>
+      </div>
+    </aside>
+
+    <!-- Header -->
+    <header class="page-header">
+      <img src="assets/sidebarLogo.png" alt="Join Logo" class="header-join-logo-absolute">
+      <div class="header-right">
+        <span class="logo-title">Kanban Project Management Tool</span>
+        <div class="header-icons">
+          <div class="help-icon" id="helpIcon">?</div>
+          <div class="profile-wrapper">
+            <div class="user-initial-small" id="userInitialButton"></div>
+            <div class="dropdown-menu-small" id="userDropdown">
+              <ul>
+                <li class="mobile-only"><a href="help.html">Help</a></li>
+                <li><a href="#">Legal Notice</a></li>
+                <li><a href="#">Privacy Policy</a></li>
+                <li><a href="#">Log out</a></li>
+              </ul>
             </div>
           </div>
         </div>
-        <div class="bottom-row">
-          <div class="task-container"></div>
-          <div class="task-container"></div>
-          <div class="task-container"></div>
-          <div class="task-container"></div>
+      </div>
+    </header>
+
+    <!-- Main Container -->
+    <div class="main-container">
+      <div class="main-content">
+        <div class="board-header">
+          <h1 class="board-title">Board</h1>
+          <div class="board-controls">
+            <div class="search-container">
+              <input type="text" class="search-input" placeholder="Find Task" id="boardSearch">
+              <div class="search-icon">
+                <img src="assets/search.png" alt="Search">
+              </div>
+            </div>
+            <button class="add-task-button" onclick="openAddTaskModal()">
+              Add Task
+              <img src="assets/plus.png" alt="Add">
+            </button>
+          </div>
+        </div>
+
+        <div class="board-content">
+          <div class="board-columns">
+            <div class="board-column">
+              <div class="column-header">
+                <h2 class="column-title">To do</h2>
+                <button class="column-add-btn" onclick="openAddTaskModal('to-do')"></button>
+              </div>
+              <div class="task-container" data-status="to-do"></div>
+            </div>
+
+            <div class="board-column">
+              <div class="column-header">
+                <h2 class="column-title">In progress</h2>
+                <button class="column-add-btn" onclick="openAddTaskModal('in-progress')"></button>
+              </div>
+              <div class="task-container" data-status="in-progress"></div>
+            </div>
+
+            <div class="board-column">
+              <div class="column-header">
+                <h2 class="column-title">Await feedback</h2>
+                <button class="column-add-btn" onclick="openAddTaskModal('awaiting-feedback')"></button>
+              </div>
+              <div class="task-container" data-status="awaiting-feedback"></div>
+            </div>
+
+            <div class="board-column">
+              <div class="column-header">
+                <h2 class="column-title">Done</h2>
+              </div>
+              <div class="task-container" data-status="done"></div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
+
+    <!-- Add Task Modal -->
+    <div id="addTaskModal" class="modal-overlay" style="display: none;">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h2>Add Task</h2>
+          <button class="modal-close" onclick="closeAddTaskModal()">×</button>
+        </div>
+        
+        <form id="addTaskForm" onsubmit="handleAddTask(event)">
+          <div class="modal-body">
+            <div class="form-row">
+              <div class="form-group">
+                <label for="taskTitle">Title<span class="required">*</span></label>
+                <input type="text" id="taskTitle" placeholder="Enter a title" required>
+              </div>
+              
+              <div class="form-group">
+                <label for="taskDueDate">Due Date<span class="required">*</span></label>
+                <input type="date" id="taskDueDate" required>
+              </div>
+            </div>
+            
+            <div class="form-group">
+              <label for="taskDescription">Description</label>
+              <textarea id="taskDescription" placeholder="Enter a Description" rows="4"></textarea>
+            </div>
+            
+            <div class="form-row">
+              <div class="form-group">
+                <label for="taskAssigned">Assigned to<span class="required">*</span></label>
+                <div class="select-wrapper">
+                  <select id="taskAssigned" required>
+                    <option value="">Select contacts to assign</option>
+                  </select>
+                  <div class="selected-contacts" id="selectedContacts"></div>
+                </div>
+              </div>
+            </div>
+            
+            <div class="form-row">
+              <div class="form-group">
+                <label>Prio</label>
+                <div class="priority-buttons">
+                  <button type="button" class="priority-btn" data-priority="urgent">
+                    Urgent <img src="assets/urgent.png" alt="">
+                  </button>
+                  <button type="button" class="priority-btn active" data-priority="medium">
+                    Medium <img src="assets/medium.png" alt="">
+                  </button>
+                  <button type="button" class="priority-btn" data-priority="low">
+                    Low <img src="assets/low.png" alt="">
+                  </button>
+                </div>
+              </div>
+              
+              <div class="form-group">
+                <label for="taskCategory">Category<span class="required">*</span></label>
+                <select id="taskCategory" required>
+                  <option value="">Select task category</option>
+                  <option value="Technical Task">Technical Task</option>
+                  <option value="User Story">User Story</option>
+                </select>
+              </div>
+            </div>
+            
+            <div class="form-group">
+              <label>Subtasks</label>
+              <div class="subtask-input">
+                <input type="text" id="subtaskInput" placeholder="Add new subtask">
+                <button type="button" class="subtask-add-btn" onclick="addSubtask()">+</button>
+              </div>
+              <ul id="subtasksList" class="subtasks-list"></ul>
+            </div>
+          </div>
+          
+          <div class="modal-footer">
+            <span class="required-note"><span class="required">*</span>This field is required</span>
+            <div class="form-buttons">
+              <button type="button" class="btn-secondary" onclick="clearForm()">
+                Clear ×
+              </button>
+              <button type="submit" class="btn-primary">
+                Create task <img src="assets/check.png" alt="">
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="scripts/board.js"></script>
+    <script src="scripts/userInitials.js" type="module"></script>
+    <script src="scripts/dropdown-menu.js"></script>
+    <script src="scripts/navigation.js"></script>
   </body>
 </html>
