@@ -19,7 +19,7 @@
         <div class="sidebar-logo-header">
           <img src="assets/sidebarLogo.png" alt="Join Logo" class="sidebar-join-logo">
         </div>
-        <a href="#" class="nav-item">
+        <a href="summary.html" class="nav-item">
           <div class="nav-item-content">
             <img src="assets/Icons.png" alt="Summary">
             <span>Summary</span>
@@ -31,13 +31,13 @@
             <span>Add Task</span>
           </div>
         </a>
-        <a href="#" class="nav-item">
+        <a href="board.html" class="nav-item">
           <div class="nav-item-content">
             <img src="assets/Icons2.png" alt="Board">
             <span>Board</span>
           </div>
         </a>
-        <a href="#" class="nav-item">
+        <a href="contacts.html" class="nav-item">
           <div class="nav-item-content">
             <img src="assets/Icons3.png" alt="Contacts">
             <span>Contacts</span>
@@ -45,8 +45,8 @@
         </a>
       </nav>
       <div class="sidebar-footer">
-        <a href="#">Privacy Policy</a>
-        <a href="#">Legal notice</a>
+        <a href="privacyPolicy.html">Privacy Policy</a>
+        <a href="Legal-notice.html">Legal notice</a>
       </div>
     </aside>
 
@@ -77,14 +77,14 @@
       <div class="maincontent">
         <form id="addtask-form" novalidate>
           <div class="form-section">
-            <label for="title"> <span class="required-note"></span></label>
+            <label for="title">Title <span class="required-note">*</span></label>
             <input type="text" id="title" placeholder="Enter a title" autocomplete="off" />
             <div id="title-error" class="input-error-message"></div>
 
             <label for="desc">Description <span class="optional">(optional)</span></label>
             <textarea id="desc" placeholder="Enter a Description"></textarea>
 
-            <label for="due-date-custom" style="margin-top:20px;">Due date <span class="required-note"></span></label>
+            <label for="due-date-custom" style="margin-top:20px;">Due date <span class="required-note">*</span></label>
             <div class="custom-date-row">
               <input 
                 type="text" 
@@ -136,7 +136,7 @@
               <div class="assigned-options d-none" id="assigned-list"></div>
             </div>
             <div id="selected-avatars" class="selected-avatars"></div>
-            <label for="category" style="margin-top:15px;">Category</label>
+            <label for="category" style="margin-top:15px;">Category <span class="required-note">*</span></label>
 
             <!-- Category Dropdown -->
             <div class="category-dropdown" id="category-dropdown">
@@ -170,19 +170,42 @@
         </form>
         <div class="bottom-buttons">
           <div class="bottom-fixed-buttons">
-       <button type="button" class="clear-btn" onclick="clearForm()">
-  Clear <span class="x">×</span>
-</button>
+            <button type="button" class="clear-btn" onclick="clearForm()">
+              Clear <span class="x">×</span>
+            </button>
             <button type="button" class="create-btn">Create Task ✔</button>
           </div>
         </div>
       </div>
     </main>
 
+    <div class="mobile-bottom-nav">
+  <div class="mobile-nav-items">
+    <a href="summary.html" class="mobile-nav-item">
+      <img src="assets/Icons.png" alt="Summary">
+      <span>Summary</span>
+    </a>
+    <a href="addTask.html" class="mobile-nav-item active">
+      <img src="assets/Icons1.png" alt="Add Task">
+      <span>Add Task</span>
+    </a>
+    <a href="board.html" class="mobile-nav-item">
+      <img src="assets/Icons2.png" alt="Board">
+      <span>Board</span>
+    </a>
+    <a href="contacts.html" class="mobile-nav-item">
+      <img src="assets/Icons3.png" alt="Contacts">
+      <span>Contacts</span>
+    </a>
+  </div>
+</div>
+
     <!-- Scripts -->
     <script src="scripts/addSubtaks.js"></script>
     <script src="scripts/dropdown-menu.js"></script>
     <script src="scripts/addtask-validation.js"></script>
-     <script src="scripts/addTask.js"></script>
+    <script src="scripts/addTask.js"></script>
+    <script src="scripts/userInitials.js" type="module"></script>
+    <script src="scripts/navigation.js"></script>
   </body>
 </html>
