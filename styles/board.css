@@ -831,3 +831,40 @@
     background: #2A3647;
   }
 }
+
+/* Mobile Bottom Navigation */
+.mobile-bottom-nav {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: #fff;
+  border-top: 1px solid #e0e0e0;
+  padding: 8px 0;
+  z-index: 1000;
+}
+
+.mobile-nav-items {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  max-width: 100%;
+}
+
+.mobile-nav-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-decoration: none;
+  color: #42526E;
+  font-size: 12px;
+  padding: 4px 8px;
+  transition: color 0.2s;
+  font-family: 'Inter', sans-serif;
+}
+
+.mobile-nav-item.active {
+  color: #4589FF;
+  background: #E7F0FD;
+  border-radius: 8px;
+}
