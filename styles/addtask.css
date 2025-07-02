@@ -1,3 +1,5 @@
+/* Komplett ersetzen: styles/addtask.css */
+
 body {
   font-family: 'Inter', Arial, sans-serif;
   background-color: #f6f7fb;
@@ -10,37 +12,46 @@ main {
   margin-left: 232px;
   margin-top: 80px;
   height: calc(100vh - 80px);
-  background: #fff;
+  background: #f6f7fb;
   display: flex;
   align-items: flex-start;
+  justify-content: flex-start;
+  padding: 20px 60px;
+  box-sizing: border-box;
 }
 
 .maincontent {
-  max-width: 900px;
-  width: 25%;
+  max-width: 652px;
+  width: 100%;
   margin: 0;
-  padding: 0 60px 0 60px;
+  padding: 32px 80px;
   display: flex;
   flex-direction: column;
   background: #fff;
-  height: calc(100vh - 50px);
+  height: calc(100vh - 120px);
   overflow-y: auto;
-  overflow-x: auto;
+  overflow-x: hidden;
   position: relative;
   scrollbar-gutter: stable both-edges;
+  border-radius: 30px;
+  box-shadow: 0 0 10px 3px rgba(0, 0, 0, 0.08);
+  box-sizing: border-box;
 }
 
-
-.h1div {
-  margin-top: 30px;
-}
 h1 {
-  font-size: 32px;
+  font-size: 48px;
   font-weight: 700;
-  color: #2a3647;
-  margin-bottom: 32px;
+  color: #000000;
+  margin-bottom: 16px;
   margin-top: 0;
   letter-spacing: 0.01em;
+  text-align: center;
+}
+
+hr {
+  border: 2px solid #4589FF;
+  width: 150px;
+  margin: 0 auto 32px auto;
 }
 
 form {
@@ -48,7 +59,9 @@ form {
   flex-direction: column;
   gap: 0;
   width: 100%;
+  flex: 1;
 }
+
 .form-section {
   display: flex;
   flex-direction: column;
@@ -60,66 +73,86 @@ label {
   font-size: 19px;
   font-weight: 700;
   color: #2a3647;
-  margin-bottom: 5px;
-  margin-top: 22px;
+  margin-bottom: 8px;
+  margin-top: 32px;
   letter-spacing: 0.01em;
 }
-label:first-child { margin-top: 0; }
-label .optional,
-label .required-note {
+
+label:first-child {
+  margin-top: 0;
+}
+
+label .optional {
   font-size: 14px;
   color: #7d8ba1;
   font-weight: 400;
   margin-left: 3px;
 }
 
-input[type="text"], textarea {
+label .required-note {
+  font-size: 14px;
+  color: #ff8190;
+  font-weight: 400;
+  margin-left: 3px;
+}
+
+input[type="text"] {
   width: 100%;
-  max-width: 440px;
-  padding: 18px 0 8px 0;
-  font-size: 20px;
+  padding: 12px 20px 6px 20px;
+  font-size: 19px;
   border: none;
-  border-bottom: 2px solid #e5e7eb;
+  border-bottom: 1px solid #D1D1D1;
   border-radius: 0;
   box-sizing: border-box;
   background: #fff;
-  color: #2a3647;
+  color: #000000;
   font-family: inherit;
   transition: border-color 0.2s;
   cursor: pointer;
+  font-weight: 400;
+  line-height: 120%;
+  margin-bottom: 20px;
 }
-input[type="text"]:focus, textarea:focus {
-  border-bottom: 2px solid #4589FF;
+
+input[type="text"]:focus {
+  border-bottom: 1px solid #4589FF;
   outline: none;
 }
-#desc:focus, textarea#desc:focus {
-  border: 1.5px solid #4589FF !important;   
-  box-shadow: 0 0 0 2px #d2e3ff;           
-  outline: none;
+
+input[type="text"]::placeholder {
+  color: #D1D1D1;
+  font-size: 19px;
+  opacity: 1;
 }
 
 textarea {
   resize: vertical;
   overflow-y: auto;
   width: 100%;
-  max-width: 440px;
-  height: 154px;
-  font-size: 20px;
+  height: 120px;
+  font-size: 19px;
   font-family: inherit;
   background: #fff;
   border-radius: 8px;
   border: 1.5px solid #e5e7eb;
   box-sizing: border-box;
-  padding: 16px 12px;
-  margin-bottom: 18px;
+  padding: 12px 20px;
+  margin-bottom: 24px;
   transition: border-color 0.2s;
-  color: #2a3647;
+  color: #000000;
+  font-weight: 400;
+  line-height: 120%;
 }
 
-input[type="text"]::placeholder,
+textarea:focus {
+  border: 1.5px solid #4589FF !important;   
+  box-shadow: 0 0 0 2px #d2e3ff;           
+  outline: none;
+}
+
 textarea::placeholder {
-  color: #b3b3b3;
-  font-size: 20px;
+  color: #D1D1D1;
+  font-size: 19px;
   opacity: 1;
 }
 
@@ -128,41 +161,45 @@ textarea::placeholder {
   display: flex;
   align-items: center;
   width: 100%;
-  max-width: 440px;
-  border-bottom: 2px solid #e5e7eb;
-  margin-bottom: 18px;
+  border-bottom: 1px solid #D1D1D1;
+  margin-bottom: 24px;
   padding-right: 6px;
   transition: border-color 0.2s;
-  min-height: 60px;
+  min-height: 40px;
   background: #fff;
   box-sizing: border-box;
 }
+
 .custom-date-row:focus-within {
-  border-bottom: 2px solid #4589FF;
+  border-bottom: 1px solid #4589FF;
 }
+
 .custom-date-input {
- border: none !important;
+  border: none !important;
   border-bottom: none !important;
   border-top: none !important;
   box-shadow: none !important;
   outline: none !important;
   background: transparent;
-  font-size: 20px;
-  color: #2a3647;
+  font-size: 19px;
+  color: #000000;
   flex: 1;
-  padding: 18px 0 8px 0;
+  padding: 12px 20px 6px 20px;
   outline: none;
   font-family: inherit;
   width: 100%;
-  max-width: 440px;
   cursor: pointer;
+  font-weight: 400;
+  line-height: 120%;
 }
+
 .custom-date-input::placeholder {
-  color: #b3b3b3;
-  font-size: 20px;
+  color: #D1D1D1;
+  font-size: 19px;
   opacity: 1;
   user-select: none;
 }
+
 .calendar-btn {
   background: none;
   border: none;
@@ -170,14 +207,16 @@ textarea::placeholder {
   cursor: pointer;
   display: flex;
   align-items: center;
-  height: 38px;
+  height: 32px;
   margin-left: 4px;
 }
+
 .calendar-icon {
-  width: 24px;
-  height: 24px;
+  width: 20px;
+  height: 20px;
   display: block;
 }
+
 /* Hide native date input */
 input[type="date"]#hiddenDateInput {
   display: none;
@@ -187,14 +226,14 @@ input[type="date"]#hiddenDateInput {
 .priority-buttons {
   display: flex;
   gap: 12px;
-  margin-bottom: 18px;
-  margin-top: 6px;
+  margin-bottom: 32px;
+  margin-top: 8px;
 }
 
 /* Pflichtfeld rot markieren */
 .input-error,
 .input-error:focus {
-  border-bottom: 2px solid #ff5d5d !important;
+  border-bottom: 1px solid #ff5d5d !important;
   outline: none;
 }
 
@@ -202,7 +241,7 @@ input[type="date"]#hiddenDateInput {
   color: #ff5d5d;
   font-size: 14px;
   margin-top: 2px;
-  margin-bottom: 12px;
+  margin-bottom: 8px;
   font-family: inherit;
   padding-left: 2px;
   min-height: 18px;
@@ -211,242 +250,221 @@ input[type="date"]#hiddenDateInput {
 .priority-btn {
   display: flex;
   align-items: center;
-  gap: 10px;
-  padding: 10px 22px;
-  font-size: 19px;
+  gap: 8px;
+  padding: 8px 14px;
+  font-size: 16px;
   border: 2px solid #e5e7eb;
   border-radius: 8px;
   background: #fff;
   color: #2a3647;
   cursor: pointer;
   font-weight: 400;
-  transition: border-color 0.2s;
-  width: 136px;
-  height: 51px;
+  transition: all 0.2s;
+  height: 42px;
   justify-content: center;
   position: relative;
   box-sizing: border-box;
+  flex: 1;
 }
 
-/* Urgent & Low: Hover-Effekt NUR untere Border färben, Inhalt bleibt */
+/* Urgent & Low: Hover-Effekt */
 .priority-btn.urgent:hover:not(.active-urgent) {
-  border-color: #e5e7eb;
-  border-bottom:3px solid #ff3d00;
-  color: #2a3647;
+  border-color: #ff3d00;
+  color: #ff3d00;
   background: #fff;
 }
+
 .priority-btn.low:hover:not(.active-low) {
-  border-color: #e5e7eb;
-  border-bottom: 3px solid #7ae229;
-  color: #2a3647;
+  border-color: #7ae229;
+  color: #7ae229;
   background: #fff;
 }
-/* Urgent & Low: Standard (nicht aktiv) */
-.priority-btn.urgent:not(.active-urgent),
-.priority-btn.low:not(.active-low) {
-  border-bottom: 2px solid #e5e7eb;
-}
-/* Urgent & Low aktiv */
+
+/* Priority aktive Zustände */
 .priority-btn.active-urgent {
   background: #ff3d00;
   color: #fff;
   border-color: #ff3d00;
 }
+
 .priority-btn.active-low {
   background: #7ae229;
   color: #fff;
   border-color: #7ae229;
 }
-/* Medium: kein Hover, immer orange */
+
 .priority-btn.medium,
 .priority-btn.active-medium {
   background: #ffa800;
   color: #fff;
   border-color: #ffa800;
-  pointer-events: none;
 }
+
 /* Priority-Icons invertieren wenn aktiv */
 .priority-btn.active-urgent img,
 .priority-btn.active-medium img,
 .priority-btn.active-low img {
   filter: brightness(0) invert(1);
 }
-/* Priority-Icons beim Hover anpassen (bleibt farbig) */
-.priority-btn.urgent:hover:not(.active-urgent) img,
-.priority-btn.low:hover:not(.active-low) img {
-  filter: none;
-}
 
-/* ========== Dropdown Arrow ========== */
-.dropdown-arrow-hover-area {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 32px;
-  height: 36px;
-  position: relative;
-}
-.dropdown-arrow-wrapper {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 50%;
-  width: 28px;
-  height: 28px;
-  transition: background 0.12s;
-  cursor: pointer;
-  margin: 0 auto;
-}
-.dropdown-arrow {
-  pointer-events: none;
+.priority-btn img {
   width: 16px;
   height: 16px;
-  opacity: 0.85;
-  transition: filter 0.15s, opacity 0.15s;
-  display: block;
-  margin: 0 auto;
-}
-.dropdown-arrow-hover-area:hover .dropdown-arrow-wrapper,
-.dropdown-arrow-hover-area:focus-within .dropdown-arrow-wrapper {
-  background: #dbeaff;
-}
-.dropdown-arrow-hover-area:hover .dropdown-arrow,
-.dropdown-arrow-hover-area:focus-within .dropdown-arrow {
-  filter: none;
-  opacity: 1;
 }
 
-/* ========== Assigned to, Category, Subtasks WIDTH FIX ========== */
-.assigned-dropdown,
-.category-dropdown,
-.subtask-input-row {
+/* ========== Assigned Dropdown ========== */
+.assigned-dropdown {
+  position: relative;
   width: 100%;
-  max-width: 440px;
-  box-sizing: border-box;
+  margin-bottom: 32px;
 }
 
-.assigned-select,
-.category-select {
-  width: 100%;
-  box-sizing: border-box;
-  min-height: 44px;
-}
-
-.assigned-search-input,
-.category-placeholder {
-  width: 100%;
-}
-
-/* ========== Linie unten für Assigned to, Category und Subtasks ========== */
 .assigned-select {
   width: 100%;
-  border-bottom: 2px solid #e5e7eb;
+  border-bottom: 1px solid #D1D1D1;
   border-radius: 0;
   background: #fff;
   box-sizing: border-box;
-  margin-bottom: 18px;
   padding-right: 6px;
   transition: border-color 0.2s;
   display: flex;
   align-items: center;
-  min-height: 44px;
+  min-height: 40px;
 }
+
 .assigned-select:focus-within {
-  border-bottom: 2px solid #4589FF;
+  border-bottom: 1px solid #4589FF;
 }
+
 .assigned-search-input {
   border: none !important;
   outline: none;
   background: transparent;
   width: 100%;
-  font-size: 20px;
-  color: #2a3647;
-  padding: 18px 0 8px 0;
+  font-size: 19px;
+  color: #000000;
+  padding: 12px 20px 6px 20px;
   font-family: inherit;
   box-shadow: none;
+  font-weight: 400;
+  line-height: 120%;
 }
+
 .assigned-search-input::placeholder {
-  color: #b3b3b3;
-  font-size: 20px;
+  color: #D1D1D1;
+  font-size: 19px;
   opacity: 1;
 }
 
-/* Category Dropdown Anpassung */
+/* Selected avatars */
+.selected-avatars {
+  display: flex;
+  gap: 8px;
+  margin-top: 12px;
+  flex-wrap: wrap;
+  margin-bottom: 16px;
+}
+
+.selected-avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  color: white;
+  font-weight: bold;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #FF7A00;
+}
+
+/* Category Dropdown */
 .category-dropdown {
   width: 100%;
-  max-width: 440px;
   position: relative;
-  margin-bottom: 20px;
+  margin-bottom: 32px;
 }
+
 .category-select {
   width: 100%;
   background: #fff;
   box-sizing: border-box;
   display: flex;
   align-items: center;
-  min-height: 44px;
+  min-height: 40px;
   padding-right: 6px;
-  border-bottom: 2px solid #e5e7eb;
+  border-bottom: 1px solid #D1D1D1;
   cursor: pointer;
   position: relative;
   border-radius: 0;
   transition: border-bottom-color 0.2s;
   user-select: none;
 }
+
 .category-select.active,
 .category-select.has-value {
-  border-bottom: 2px solid #4589FF;
+  border-bottom: 1px solid #4589FF;
 }
+
 .category-placeholder {
-  color: #b3b3b3;
-  font-size: 20px;
-  padding: 18px 0 8px 0;
+  color: #D1D1D1;
+  font-size: 19px;
+  padding: 12px 20px 6px 20px;
   flex: 1;
   display: flex;
   align-items: center;
-  height: 36px;
-  opacity: 0.6;
-}
-.category-select.has-value .category-placeholder {
-  color: #2a3647;
+  height: 32px;
   opacity: 1;
-  font-weight: 500;
+  font-weight: 400;
+  line-height: 120%;
 }
+
+.category-select.has-value .category-placeholder {
+  color: #000000;
+  opacity: 1;
+  font-weight: 400;
+}
+
 .category-dropdown .dropdown-arrow-hover-area {
   display: flex;
   align-items: center;
   justify-content: center;
   width: 32px;
-  height: 36px;
+  height: 32px;
   position: relative;
 }
+
 .category-dropdown .dropdown-arrow-wrapper {
   display: flex;
   align-items: center;
   justify-content: center;
   border-radius: 50%;
-  width: 28px;
-  height: 28px;
+  width: 24px;
+  height: 24px;
   transition: background 0.12s;
   cursor: pointer;
   margin: 0 auto;
 }
+
 .category-dropdown .dropdown-arrow-wrapper.arrow-hover {
   background: #dbeaff;
 }
+
 .category-arrow {
   pointer-events: none;
-  width: 18px;
-  height: 18px;
+  width: 16px;
+  height: 16px;
   opacity: 1;
   display: block;
   margin: 0 auto;
   transition: transform 0.2s;
 }
+
 .category-arrow polyline {
   stroke: #4589FF;
   transition: stroke 0.14s;
 }
+
 .category-options {
   background: #fff;
   border-radius: 8px;
@@ -454,62 +472,74 @@ input[type="date"]#hiddenDateInput {
   margin-top: 4px;
   padding: 6px 0;
   width: 100%;
-  max-width: 440px;
   position: absolute;
   left: 0;
   z-index: 10;
-  font-size: 18px;
-  color: #2a3647;
+  font-size: 19px;
+  color: #000000;
   border: 1.5px solid #e5e7eb;
 }
+
 .category-option {
-  padding: 12px 18px;
+  padding: 10px 20px;
   cursor: pointer;
   border-radius: 8px;
   transition: background 0.12s;
   outline: none;
-  font-size: 18px;
+  font-size: 19px;
+  font-weight: 400;
 }
+
 .category-option.selected,
 .category-option:hover,
 .category-option:focus {
   background: #D2E3FF !important;
 }
 
-/* Subtask input bottom border: nur EINE Linie! */
+/* Subtask input */
 .subtask-input-row {
   width: 100%;
-  max-width: 440px;
   box-sizing: border-box;
-  border-bottom: 2px solid #e5e7eb;
+  border-bottom: 1px solid #D1D1D1;
   border-radius: 0;
   background: #fff;
-  margin-bottom: 18px;
+  margin-bottom: 20px;
   padding-right: 6px;
   transition: border-color 0.2s;
   display: flex;
   align-items: center;
-  min-height: 44px;
+  min-height: 40px;
 }
+
 .subtask-input-row:focus-within {
-  border-bottom: 2px solid #4589FF;
+  border-bottom: 1px solid #4589FF;
 }
+
 .subtask-input {
   border: none !important;
   outline: none;
   background: transparent;
   width: 100%;
-  font-size: 16px;
-  color: #b3b3b3;
-  padding: 8px 0;
+  font-size: 19px;
+  color: #D1D1D1;
+  padding: 12px 20px 6px 20px;
   font-family: inherit;
   box-shadow: none;
+  font-weight: 400;
+  line-height: 120%;
+}
+
+.subtask-input::placeholder {
+  color: #D1D1D1;
+  font-size: 19px;
+  opacity: 1;
 }
 
 #subtask-list-container,
 #subtask-list {
   border: none !important;
   background: none;
+  margin-bottom: 20px;
 }
 
 .add-subtask-button-wrapper {
@@ -517,20 +547,21 @@ input[type="date"]#hiddenDateInput {
   align-items: center;
   justify-content: center;
   border-radius: 50%;
-  width: 28px;
-  height: 28px;
+  width: 24px;
+  height: 24px;
   transition: background 0.12s;
   cursor: pointer;
 }
+
 .add-subtask-button {
   background: none;
   border: none;
   color: #4589ff;
-  font-size: 15px;
-  font-weight: 700;
+  font-size: 20px;
+  font-weight: 400;
   line-height: 1;
-  width: 28px;
-  height: 28px;
+  width: 24px;
+  height: 24px;
   padding: 0;
   text-align: center;
   display: flex;
@@ -538,23 +569,24 @@ input[type="date"]#hiddenDateInput {
   justify-content: center;
   transition: color 0.16s;
   cursor: pointer;
-  width: 24px;
-  height: 24px;
 }
+
 .add-subtask-button:focus {
   outline: none;
 }
+
 .add-subtask-button-wrapper:hover,
 .add-subtask-button-wrapper:focus-within {
   background: #dbeaff;
 }
+
 .add-subtask-button-wrapper:hover .add-subtask-button,
 .add-subtask-button-wrapper:focus-within .add-subtask-button {
   color: #005DFF;
 }
 
 .subtask-list-container {
-  margin-bottom: 16px;
+  margin-bottom: 20px;
   background: none;
   border: none;
 }
@@ -563,7 +595,7 @@ input[type="date"]#hiddenDateInput {
 .bottom-buttons {
   position: fixed;
   right: 48px;
-  bottom: 10px;
+  bottom: 40px;
   background: transparent;
   box-shadow: none;
   display: flex;
@@ -572,6 +604,7 @@ input[type="date"]#hiddenDateInput {
   gap: 10px;
   z-index: 20;
 }
+
 .bottom-fixed-buttons {
   display: flex;
   gap: 16px;
@@ -579,52 +612,31 @@ input[type="date"]#hiddenDateInput {
 
 .clear-btn {
   background: #fff;
-  color: #42526e;
-  border: 2px solid #b3b3b3;
-  font-size: 20px;
-  font-weight: 500;
-  border-radius: 12px;
-  padding: 14px 20px;
-  box-shadow: 0 2px 8px 0 rgba(69,137,255,0.10);
+  color: #647188;
+  border: 1px solid #647188;
+  font-size: 19px;
+  font-weight: 400;
+  border-radius: 8px;
+  padding: 10px 35px;
   display: flex;
   align-items: center;
-  gap: 14px;
+  gap: 10px;
   cursor: pointer;
   outline: none;
-  transition:
-    background 0.14s,
-    color 0.14s,
-    border-color 0.14s,
-    box-shadow 0.19s,
-    transform 0.16s;
+  transition: all 0.2s;
 }
+
 .clear-btn .x {
-  font-size: 22px;
+  font-size: 18px;
   font-weight: 400;
   color: inherit;
   margin-left: 6px;
-  letter-spacing: 1px;
-  transition: color 0.14s;
 }
+
 .clear-btn:hover,
 .clear-btn:focus-visible {
-  background: #f4faff;
-  color: #4589FF;
-  border-color: #4589FF;
-  box-shadow: 0 8px 20px 0 rgba(69,137,255,0.16);
-}
-.clear-btn:hover .x,
-.clear-btn:focus-visible .x {
-  color: #4589FF;
-}
-.clear-btn:active {
-  background: #e6f0ff;
-  color: #2563d6;
-  border-color: #2563d6;
-}
-.clear-btn:disabled {
-  opacity: 0.5;
-  cursor: not-allowed;
+  transform: scale(1.20);
+  box-shadow: 0px 0px 10px 3px rgba(0, 0, 0, 0.08);
 }
 
 /* ========== CREATE BUTTON ========== */
@@ -632,50 +644,341 @@ input[type="date"]#hiddenDateInput {
   background: #4589FF;
   color: #fff;
   border: none;
-  font-size: 20px;
+  font-size: 19px;
   font-weight: 400;
-  border-radius: 12px;
-  padding: 14px 12px;
-  transition: background 0.15s, transform 0.17s;
-  box-shadow: 0 2px 8px 0 rgba(69,137,255,0.10);
+  border-radius: 8px;
+  padding: 10px 35px;
+  transition: all 0.2s;
   display: flex;
   align-items: center;
-  gap: 14px;
+  gap: 10px;
   cursor: pointer;
 }
+
 .create-btn:hover {
-  background: #005DFF;
+  transform: scale(1.20);
+  box-shadow: 0px 0px 10px 3px rgba(0, 0, 0, 0.08);
 }
 
-/* ========== Responsive Anpassungen ========== */
-@media (max-width: 1080px) {
-  .maincontent { padding-left: 20px; padding-right: 20px; }
-  .bottom-buttons { right: 12px; bottom: 12px; }
+/* ========== Success Overlay ========== */
+.task-success-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    animation: fadeIn 0.3s ease-out;
 }
+
+.task-success-content {
+    background: #2A3647;
+    color: white;
+    padding: 24px 48px;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    animation: slideUp 0.3s ease-out;
+}
+
+.task-success-icon {
+    width: 48px;
+    height: 48px;
+    background: #4589FF;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.task-success-text {
+    font-size: 20px;
+    font-weight: 400;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes slideUp {
+    from {
+        transform: translateY(30px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+/* ========== Mobile Bottom Navigation ========== */
+.mobile-bottom-nav {
+  display: none;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: #fff;
+  border-top: 1px solid #e0e0e0;
+  padding: 8px 0;
+  z-index: 1000;
+}
+
+.mobile-nav-items {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  max-width: 100%;
+}
+
+.mobile-nav-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-decoration: none;
+  color: #42526E;
+  font-size: 12px;
+  padding: 4px 8px;
+  transition: color 0.2s;
+}
+
+.mobile-nav-item.active {
+  color: #4589FF;
+  background: #E7F0FD;
+  border-radius: 8px;
+}
+
+.mobile-nav-item img {
+  width: 24px;
+  height: 24px;
+  margin-bottom: 4px;
+}
+
+/* ========== Responsive Design ========== */
+
+/* Tablet Styles (768px - 850px) */
 @media (max-width: 850px) {
-  main { margin-left: 70px; }
+  main { 
+    margin-left: 70px; 
+  }
+  
+  .maincontent {
+    padding: 28px 60px;
+  }
 }
+
+/* Mobile Styles (768px and below) */
 @media (max-width: 768px) {
-  .maincontent { padding: 0 8px; }
-  main { margin-left: 0; }
-  .bottom-buttons { right: 6px; bottom: 6px; }
-}
-@media (max-width: 600px) {
-  .clear-btn, .create-btn {
-    padding: 8px 12px;
-    border-radius: 8px;
+  body {
+    overflow: auto;
+  }
+  
+  main { 
+    margin-left: 0;
+    margin-top: 0;
+    padding: 0;
+    height: 100vh;
+    background: #f6f7fb;
+  }
+  
+  .maincontent {
+    margin: 0;
+    padding: 20px 24px 100px 24px;
+    border-radius: 0;
+    box-shadow: none;
+    height: auto;
+    min-height: calc(100vh - 80px);
+    background: #f6f7fb;
+  }
+  
+  h1 {
+    font-size: 36px;
+    margin-bottom: 12px;
+  }
+  
+  hr {
+    width: 120px;
+    margin-bottom: 24px;
+  }
+  
+  label {
+    font-size: 16px;
+    margin-top: 24px;
+  }
+  
+  input[type="text"],
+  textarea,
+  .custom-date-input,
+  .assigned-search-input,
+  .category-placeholder,
+  .subtask-input {
+    font-size: 16px;
+    padding: 10px 16px 5px 16px;
+  }
+  
+  input[type="text"]::placeholder,
+  textarea::placeholder,
+  .custom-date-input::placeholder,
+  .assigned-search-input::placeholder,
+  .subtask-input::placeholder {
     font-size: 16px;
   }
+  
+  textarea {
+    height: 100px;
+    padding: 10px 16px;
+  }
+  
+  .priority-buttons {
+    gap: 8px;
+    margin-bottom: 24px;
+  }
+  
+  .priority-btn {
+    font-size: 14px;
+    padding: 6px 10px;
+    height: 38px;
+  }
+  
+  .priority-btn img {
+    width: 14px;
+    height: 14px;
+  }
+  
   .assigned-dropdown,
-  .category-dropdown,
-  .subtask-input-row,
-  #subtask-list-container,
-  #subtask-list,
-  .custom-date-row {
+  .category-dropdown {
+    margin-bottom: 24px;
+  }
+  
+  .category-options,
+  .assigned-options {
+    font-size: 16px;
+  }
+  
+  .category-option {
+    padding: 8px 16px;
+    font-size: 16px;
+  }
+  
+  /* Bottom Buttons Mobile */
+  .bottom-buttons {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 80px;
+    padding: 16px 24px;
+    background: #f6f7fb;
+    border-top: 1px solid #e0e0e0;
+    z-index: 30;
+  }
+  
+  .bottom-fixed-buttons {
+    justify-content: center;
+    gap: 12px;
     width: 100%;
-    min-width: 0;
-    max-width: 100%;
-    border: none;
+  }
+  
+  .clear-btn,
+  .create-btn {
+    padding: 12px 24px;
+    font-size: 16px;
+    border-radius: 8px;
+    flex: 1;
+    max-width: 150px;
+    justify-content: center;
+  }
+  
+  .clear-btn:hover,
+  .create-btn:hover {
+    transform: none;
+  }
+  
+  /* Mobile Bottom Navigation */
+  .mobile-bottom-nav {
+    display: block;
+  }
+  
+  /* Hide desktop sidebar on mobile */
+  .sidebar {
+    display: none;
+  }
+}
+
+/* Small Mobile Styles (480px and below) */
+@media (max-width: 480px) {
+  .maincontent {
+    padding: 16px 20px 100px 20px;
+  }
+  
+  h1 {
+    font-size: 28px;
+    margin-bottom: 8px;
+  }
+  
+  hr {
+    width: 100px;
+    margin-bottom: 20px;
+  }
+  
+  label {
+    font-size: 14px;
+    margin-top: 20px;
+  }
+  
+  input[type="text"],
+  textarea,
+  .custom-date-input,
+  .assigned-search-input,
+  .category-placeholder,
+  .subtask-input {
+    font-size: 14px;
+    padding: 8px 12px 4px 12px;
+  }
+  
+  input[type="text"]::placeholder,
+  textarea::placeholder,
+  .custom-date-input::placeholder,
+  .assigned-search-input::placeholder,
+  .subtask-input::placeholder {
+    font-size: 14px;
+  }
+  
+  textarea {
+    height: 80px;
+    padding: 8px 12px;
+  }
+  
+  .priority-buttons {
+    flex-direction: column;
+    gap: 6px;
+    margin-bottom: 20px;
+  }
+  
+  .priority-btn {
+    width: 100%;
+    font-size: 14px;
+    height: 36px;
+  }
+  
+  .bottom-buttons {
+    padding: 12px 20px;
+    bottom: 60px;
+  }
+  
+  .clear-btn,
+  .create-btn {
+    padding: 10px 20px;
+    font-size: 14px;
+    max-width: 140px;
   }
 }
 
@@ -683,13 +986,17 @@ input[type="date"]#hiddenDateInput {
 .d-none {
   display: none !important;
 }
+
 .input-error,
 .input-error:focus {
-  border-bottom: 2px solid #ff5d5d !important;
+  border-bottom: 1px solid #ff5d5d !important;
   outline: none;
 }
 
-/* Für Container wie .custom-date-row */
 .custom-date-row.input-error {
-  border-bottom: 2px solid #ff5d5d !important;
+  border-bottom: 1px solid #ff5d5d !important;
+}
+
+.category-select.input-error {
+  border-bottom: 1px solid #ff5d5d !important;
 }
