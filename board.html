@@ -7,6 +7,8 @@
     <link rel="stylesheet" href="styles/header.css" />
     <link rel="stylesheet" href="styles/sidebar.css" />
     <link rel="stylesheet" href="styles/board.css" />
+    <link rel="stylesheet" href="styles/dropdown-menu.css" />
+    <link rel="stylesheet" href="styles/help.css" />
     <title>Board</title>
   </head>
   <body>
@@ -55,13 +57,13 @@
         <div class="header-icons">
           <div class="help-icon" id="helpIcon">?</div>
           <div class="profile-wrapper">
-            <div class="user-initial-small" id="userInitialButton"></div>
+            <div class="user-initial-small" id="userInitialButton">JD</div>
             <div class="dropdown-menu-small" id="userDropdown">
               <ul>
                 <li class="mobile-only"><a href="help.html">Help</a></li>
-                <li><a href="#">Legal Notice</a></li>
-                <li><a href="#">Privacy Policy</a></li>
-                <li><a href="#">Log out</a></li>
+                <li><a href="Legal-notice.html">Legal Notice</a></li>
+                <li><a href="privacyPolicy.html">Privacy Policy</a></li>
+                <li><a href="index.html">Log out</a></li>
               </ul>
             </div>
           </div>
@@ -95,7 +97,9 @@
                 <h2 class="column-title">To do</h2>
                 <button class="column-add-btn" onclick="openAddTaskModal('to-do')"></button>
               </div>
-              <div class="task-container" data-status="to-do"></div>
+              <div class="task-container" data-status="to-do">
+                <!-- Tasks werden hier dynamisch geladen -->
+              </div>
             </div>
 
             <div class="board-column">
@@ -103,7 +107,9 @@
                 <h2 class="column-title">In progress</h2>
                 <button class="column-add-btn" onclick="openAddTaskModal('in-progress')"></button>
               </div>
-              <div class="task-container" data-status="in-progress"></div>
+              <div class="task-container" data-status="in-progress">
+                <!-- Tasks werden hier dynamisch geladen -->
+              </div>
             </div>
 
             <div class="board-column">
@@ -111,14 +117,18 @@
                 <h2 class="column-title">Await feedback</h2>
                 <button class="column-add-btn" onclick="openAddTaskModal('awaiting-feedback')"></button>
               </div>
-              <div class="task-container" data-status="awaiting-feedback"></div>
+              <div class="task-container" data-status="awaiting-feedback">
+                <!-- Tasks werden hier dynamisch geladen -->
+              </div>
             </div>
 
             <div class="board-column">
               <div class="column-header">
                 <h2 class="column-title">Done</h2>
               </div>
-              <div class="task-container" data-status="done"></div>
+              <div class="task-container" data-status="done">
+                <!-- Tasks werden hier dynamisch geladen -->
+              </div>
             </div>
           </div>
         </div>
@@ -207,7 +217,7 @@
                 Clear ×
               </button>
               <button type="submit" class="btn-primary">
-                Create task <img src="assets/check.png" alt="">
+                Create task ✓
               </button>
             </div>
           </div>
@@ -215,31 +225,32 @@
       </div>
     </div>
 
+    <!-- Mobile Bottom Navigation -->
     <div class="mobile-bottom-nav mobile-only">
-  <div class="mobile-nav-items">
-    <a href="summary.html" class="mobile-nav-item">
-      <img src="assets/Icons.png" alt="Summary">
-      <span>Summary</span>
-    </a>
-    <a href="addTask.html" class="mobile-nav-item">
-      <img src="assets/Icons1.png" alt="Add Task">
-      <span>Add Task</span>
-    </a>
-    <a href="board.html" class="mobile-nav-item active">
-      <img src="assets/Icons2.png" alt="Board">
-      <span>Board</span>
-    </a>
-    <a href="contacts.html" class="mobile-nav-item">
-      <img src="assets/Icons3.png" alt="Contacts">
-      <span>Contacts</span>
-    </a>
-  </div>
-</div>
+      <div class="mobile-nav-items">
+        <a href="summary.html" class="mobile-nav-item">
+          <img src="assets/Icons.png" alt="Summary">
+          <span>Summary</span>
+        </a>
+        <a href="addTask.html" class="mobile-nav-item">
+          <img src="assets/Icons1.png" alt="Add Task">
+          <span>Add Task</span>
+        </a>
+        <a href="board.html" class="mobile-nav-item active">
+          <img src="assets/Icons2.png" alt="Board">
+          <span>Board</span>
+        </a>
+        <a href="contacts.html" class="mobile-nav-item">
+          <img src="assets/Icons3.png" alt="Contacts">
+          <span>Contacts</span>
+        </a>
+      </div>
+    </div>
 
-    <!-- Scripts -->
-    <script src="scripts/board.js"></script>
-    <script src="scripts/userInitials.js" type="module"></script>
+    <!-- Scripts - richtige Reihenfolge und Pfade -->
+    <script type="module" src="scripts/userInitials.js"></script>
     <script src="scripts/dropdown-menu.js"></script>
     <script src="scripts/navigation.js"></script>
+    <script src="scripts/board.js"></script>
   </body>
 </html>
