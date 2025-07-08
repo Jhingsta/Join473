@@ -1,123 +1,295 @@
-// User dropdown (profile)
-function toggleDropdown() {
-  document.getElementById('userDropdown').classList.toggle('show');
-}
-window.onclick = function(event) {
-  if (!event.target.matches('.user-initial-small')) {
-    var dropdowns = document.getElementsByClassName("dropdown-menu-small");
-    for (var i = 0; i < dropdowns.length; i++) {
-      var openDropdown = dropdowns[i];
-      if (openDropdown.classList.contains('show')) {
-        openDropdown.classList.remove('show');
-      }
-    }
-  }
-};
-document.addEventListener('DOMContentLoaded', () => {
-  const userInitialButton = document.querySelector('.user-initial-small');
-  if (userInitialButton) {
-    userInitialButton.addEventListener('click', toggleDropdown);
-  }
+// Komplett neue dropdown-menu.js - fehlerfrei
+
+// Globale Variablen
+let isDropdownOpen = false;
+let isCategoryOpen = false;
+let isAssignedOpen = false;
+
+// DOM Ready Handler
+document.addEventListener('DOMContentLoaded', function() {
+    initializeDropdowns();
+    initializeUserDropdown();
+    initializeClickOutside();
 });
-window.toggleDropdown = toggleDropdown;
 
-// --- Category Dropdown ---
-(() => {
-  const categorySelect = document.getElementById('category-select');
-  const categoryOptions = document.getElementById('category-options');
-  const categoryArrow = document.getElementById('category-arrow');
-  const categoryArrowWrapper = document.getElementById('category-arrow-wrapper');
-  const categorySelectedLabel = document.getElementById('category-selected-label');
-  let isOpen = false;
-
-  categorySelect.onclick = function(e) {
-    e.stopPropagation();
-    isOpen = !isOpen;
-    categoryOptions.style.display = isOpen ? "block" : "none";
-    categoryArrow.style.transform = isOpen ? "rotate(180deg)" : "rotate(0deg)";
-    categorySelect.classList.toggle('active', isOpen);
-  };
-
-  categoryArrowWrapper.onmouseenter = function() {
-    categoryArrowWrapper.classList.add('arrow-hover');
-  };
-  categoryArrowWrapper.onmouseleave = function() {
-    categoryArrowWrapper.classList.remove('arrow-hover');
-  };
-
-  document.querySelectorAll('.category-option').forEach(opt => {
-    opt.onclick = function(e) {
-      e.stopPropagation();
-      categorySelectedLabel.textContent = this.textContent;
-      document.querySelectorAll('.category-option').forEach(o => o.classList.remove('selected'));
-      this.classList.add('selected');
-      isOpen = false;
-      categoryOptions.style.display = "none";
-      categoryArrow.style.transform = "rotate(0deg)";
-      categorySelect.classList.add('active');
-      categorySelect.classList.add('has-value');
-    };
-  });
-
-  document.addEventListener('click', function(e) {
-    if(isOpen) {
-      isOpen = false;
-      categoryOptions.style.display = "none";
-      categoryArrow.style.transform = "rotate(0deg)";
+// User Dropdown initialisieren
+function initializeUserDropdown() {
+    const userButton = document.querySelector('.user-initial-small');
+    const dropdown = document.getElementById('userDropdown');
+    
+    if (userButton) {
+        userButton.addEventListener('click', function(e) {
+            e.stopPropagation();
+            toggleUserDropdown();
+        });
     }
-  });
-})();
+}
 
-// --- Assigned Dropdown (same look/function as Category) ---
-(() => {
-  const assignedSelect = document.getElementById('assigned-select');
-  const assignedOptions = document.getElementById('assigned-list');
-  const assignedArrow = document.getElementById('assigned-arrow');
-  const assignedArrowWrapper = document.getElementById('assigned-arrow-wrapper');
-  let assignedOpen = false;
-  
-  assignedSelect.onclick = function(e) {
-    e.stopPropagation();
-    assignedOpen = !assignedOpen;
-    assignedOptions.classList.toggle('d-none', !assignedOpen);
-    assignedArrow.style.transform = assignedOpen ? "rotate(180deg)" : "rotate(0deg)";
-    assignedSelect.classList.toggle('active', assignedOpen);
-  };
-
-  assignedArrowWrapper.onmouseenter = function() {
-    assignedArrowWrapper.classList.add('arrow-hover');
-  };
-  assignedArrowWrapper.onmouseleave = function() {
-    assignedArrowWrapper.classList.remove('arrow-hover');
-  };
-
-  document.addEventListener('click', function(e) {
-    if (assignedOpen) {
-      assignedOpen = false;
-      assignedOptions.classList.add('d-none');
-      assignedArrow.style.transform = "rotate(0deg)";
-      assignedSelect.classList.remove('active');
+// User Dropdown umschalten
+function toggleUserDropdown() {
+    const dropdown = document.getElementById('userDropdown');
+    if (!dropdown) return;
+    
+    isDropdownOpen = !isDropdownOpen;
+    
+    if (isDropdownOpen) {
+        dropdown.style.display = 'block';
+        dropdown.classList.add('show');
+    } else {
+        dropdown.style.display = 'none';
+        dropdown.classList.remove('show');
     }
-  });
+}
 
-  // Example contacts for demo (replace with your dynamic contact logic!)
-  const contacts = ["contact1", ".....2", "....3"];
-  assignedOptions.innerHTML = contacts.map(name =>
-    `<div class="assigned-option">${name}</div>`
-  ).join('');
+// Category Dropdown initialisieren
+function initializeCategoryDropdown() {
+    const categorySelect = document.getElementById('category-select');
+    const categoryOptions = document.getElementById('category-options');
+    const categoryArrow = document.getElementById('category-arrow');
+    const categoryLabel = document.getElementById('category-selected-label');
+    
+    if (!categorySelect || !categoryOptions) return;
 
-  assignedOptions.querySelectorAll('.assigned-option').forEach(opt => {
-    opt.onclick = function(e) {
-      e.stopPropagation();
-      // Show avatar/initial (simple demo)
-      const selected = document.createElement('span');
-      selected.textContent = this.textContent[0];
-      selected.className = 'selected-avatar';
-      document.getElementById('selected-avatars').appendChild(selected);
-      assignedOpen = false;
-      assignedOptions.classList.add('d-none');
-      assignedArrow.style.transform = "rotate(0deg)";
-      assignedSelect.classList.add('active');
+    categorySelect.addEventListener('click', function(e) {
+        e.stopPropagation();
+        toggleCategoryDropdown();
+    });
+
+    // Category Options Click Handler
+    const options = categoryOptions.querySelectorAll('.category-option');
+    options.forEach(option => {
+        option.addEventListener('click', function(e) {
+            e.stopPropagation();
+            selectCategoryOption(this);
+        });
+    });
+}
+
+function toggleCategoryDropdown() {
+    const categoryOptions = document.getElementById('category-options');
+    const categoryArrow = document.getElementById('category-arrow');
+    const categorySelect = document.getElementById('category-select');
+    
+    if (!categoryOptions) return;
+    
+    isCategoryOpen = !isCategoryOpen;
+    
+    if (isCategoryOpen) {
+        categoryOptions.style.display = 'block';
+        if (categoryArrow) {
+            categoryArrow.style.transform = 'rotate(180deg)';
+        }
+        if (categorySelect) {
+            categorySelect.classList.add('active');
+        }
+    } else {
+        categoryOptions.style.display = 'none';
+        if (categoryArrow) {
+            categoryArrow.style.transform = 'rotate(0deg)';
+        }
+        if (categorySelect) {
+            categorySelect.classList.remove('active');
+        }
+    }
+}
+
+function selectCategoryOption(option) {
+    const categoryLabel = document.getElementById('category-selected-label');
+    const categorySelect = document.getElementById('category-select');
+    
+    if (categoryLabel) {
+        categoryLabel.textContent = option.textContent;
+    }
+    
+    if (categorySelect) {
+        categorySelect.classList.add('has-value');
+    }
+    
+    // Andere Optionen deselektieren
+    document.querySelectorAll('.category-option').forEach(opt => {
+        opt.classList.remove('selected');
+    });
+    option.classList.add('selected');
+    
+    // Dropdown schließen
+    isCategoryOpen = false;
+    toggleCategoryDropdown();
+}
+
+// Assigned Dropdown initialisieren
+function initializeAssignedDropdown() {
+    const assignedSelect = document.getElementById('assigned-select');
+    const assignedOptions = document.getElementById('assigned-list');
+    
+    if (!assignedSelect || !assignedOptions) return;
+
+    assignedSelect.addEventListener('click', function(e) {
+        e.stopPropagation();
+        toggleAssignedDropdown();
+    });
+
+    // Beispiel-Kontakte erstellen falls keine vorhanden
+    if (assignedOptions.children.length === 0) {
+        createExampleContacts();
+    }
+}
+
+function toggleAssignedDropdown() {
+    const assignedOptions = document.getElementById('assigned-list');
+    const assignedArrow = document.getElementById('assigned-arrow');
+    const assignedSelect = document.getElementById('assigned-select');
+    
+    if (!assignedOptions) return;
+    
+    isAssignedOpen = !isAssignedOpen;
+    
+    if (isAssignedOpen) {
+        assignedOptions.classList.remove('d-none');
+        assignedOptions.style.display = 'block';
+        if (assignedArrow) {
+            assignedArrow.style.transform = 'rotate(180deg)';
+        }
+        if (assignedSelect) {
+            assignedSelect.classList.add('active');
+        }
+    } else {
+        assignedOptions.classList.add('d-none');
+        assignedOptions.style.display = 'none';
+        if (assignedArrow) {
+            assignedArrow.style.transform = 'rotate(0deg)';
+        }
+        if (assignedSelect) {
+            assignedSelect.classList.remove('active');
+        }
+    }
+}
+
+// Beispiel-Kontakte erstellen
+function createExampleContacts() {
+    const assignedOptions = document.getElementById('assigned-list');
+    if (!assignedOptions) return;
+    
+    const contacts = [
+        { id: 'john', name: 'John Doe', color: '#FF7A00' },
+        { id: 'jane', name: 'Jane Smith', color: '#FF5EB3' },
+        { id: 'mike', name: 'Mike Johnson', color: '#6E52FF' },
+        { id: 'sarah', name: 'Sarah Wilson', color: '#9327FF' },
+        { id: 'tom', name: 'Tom Brown', color: '#00BEE8' }
+    ];
+    
+    assignedOptions.innerHTML = contacts.map(contact => 
+        `<div class="assigned-option" data-id="${contact.id}" data-color="${contact.color}">
+            <div class="contact-avatar" style="background-color: ${contact.color}">
+                ${getContactInitials(contact.name)}
+            </div>
+            <span>${contact.name}</span>
+        </div>`
+    ).join('');
+    
+    // Event Listeners für Optionen hinzufügen
+    assignedOptions.querySelectorAll('.assigned-option').forEach(option => {
+        option.addEventListener('click', function(e) {
+            e.stopPropagation();
+            selectAssignedContact(this);
+        });
+    });
+}
+
+function selectAssignedContact(option) {
+    const contactId = option.dataset.id;
+    const contactName = option.querySelector('span').textContent;
+    const contactColor = option.dataset.color;
+    const initials = getContactInitials(contactName);
+    
+    // Avatar zum Selected Container hinzufügen
+    const selectedContainer = document.getElementById('selected-avatars');
+    if (selectedContainer) {
+        const avatar = document.createElement('div');
+        avatar.className = 'selected-avatar';
+        avatar.style.backgroundColor = contactColor;
+        avatar.textContent = initials;
+        avatar.dataset.contactId = contactId;
+        avatar.title = contactName;
+        
+        // Remove Button hinzufügen
+        avatar.onclick = function() {
+            this.remove();
+        };
+        
+        // Prüfen ob bereits ausgewählt
+        const existing = selectedContainer.querySelector(`[data-contact-id="${contactId}"]`);
+        if (!existing) {
+            selectedContainer.appendChild(avatar);
+        }
+    }
+    
+    // Dropdown schließen
+    isAssignedOpen = false;
+    toggleAssignedDropdown();
+}
+
+// Hilfsfunktionen
+function getContactInitials(name) {
+    if (!name) return '?';
+    const parts = name.trim().split(' ');
+    if (parts.length >= 2) {
+        return (parts[0][0] + parts[parts.length - 1][0]).toUpperCase();
+    }
+    return parts[0].substring(0, 2).toUpperCase();
+}
+
+// Click Outside Handler
+function initializeClickOutside() {
+    document.addEventListener('click', function(event) {
+        // User Dropdown schließen
+        const userButton = document.querySelector('.user-initial-small');
+        const userDropdown = document.getElementById('userDropdown');
+        
+        if (userDropdown && isDropdownOpen && !userButton?.contains(event.target)) {
+            isDropdownOpen = false;
+            userDropdown.style.display = 'none';
+            userDropdown.classList.remove('show');
+        }
+        
+        // Category Dropdown schließen
+        const categorySelect = document.getElementById('category-select');
+        if (isCategoryOpen && categorySelect && !categorySelect.contains(event.target)) {
+            isCategoryOpen = false;
+            toggleCategoryDropdown();
+        }
+        
+        // Assigned Dropdown schließen
+        const assignedSelect = document.getElementById('assigned-select');
+        if (isAssignedOpen && assignedSelect && !assignedSelect.contains(event.target)) {
+            isAssignedOpen = false;
+            toggleAssignedDropdown();
+        }
+    });
+}
+
+// Alle Dropdowns initialisieren
+function initializeDropdowns() {
+    // Kleine Verzögerung um sicherzustellen dass DOM geladen ist
+    setTimeout(() => {
+        initializeCategoryDropdown();
+        initializeAssignedDropdown();
+    }, 100);
+}
+
+// Globale Funktionen verfügbar machen
+window.toggleUserDropdown = toggleUserDropdown;
+window.toggleCategoryDropdown = toggleCategoryDropdown;
+window.toggleAssignedDropdown = toggleAssignedDropdown;
+
+// Legacy Support für alte Aufrufe
+window.toggleDropdown = toggleUserDropdown;
+
+// Export für Module
+if (typeof module !== 'undefined' && module.exports) {
+    module.exports = {
+        toggleUserDropdown,
+        toggleCategoryDropdown,
+        toggleAssignedDropdown,
+        initializeDropdowns
     };
-  });
-})();
+}
