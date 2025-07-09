@@ -23,7 +23,7 @@ function getInitials(name) {
 
 /** Fetch and render contacts */
 async function fetchData() {
-  let res = await fetch("https://editcontactdatenbank-default-rtdb.europe-west1.firebasedatabase.app/.json");
+  let res = await fetch("https://join473-22469-default-rtdb.europe-west1.firebasedatabase.app/");
   let data = await res.json();
   allContacts = Object.values(data.person || {});
   renderContacts();
